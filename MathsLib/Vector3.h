@@ -1,7 +1,7 @@
 #ifndef _VECTOR_3_
 #define _VECTOR_3_
 
-class Vector3 {
+class vector3 {
 public:
 	union {
 		//struct as xyz accessable with . operator
@@ -14,10 +14,10 @@ public:
 
 	float operator[](int index) const; //getter
 	float& operator[](int index);      //setter
-	Vector3 operator+(const Vector3& other) const;
-	Vector3& operator-=(const Vector3& other);
-	Vector3 operator*(float scalar) const;
-	Vector3& operator/=(float scalar);
-	Vector3& operator=(const Vector3& other);
+	vector3 operator+(const vector3& other) const;
+	vector3& operator-=(const vector3& other);
+	vector3 operator*(float scalar) const;
+	vector3& operator/=(float scalar);
+	vector3& operator=(const vector3& other);
 };
 #endif
