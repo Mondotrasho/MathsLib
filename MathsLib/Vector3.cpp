@@ -1,5 +1,3 @@
-
-
 #include "Vector3.h"
 
 float Vector3::operator [] (int index) const { return data[index]; }

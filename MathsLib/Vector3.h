@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _VECTOR_3_
+#define _VECTOR_3_
 
 class Vector3 {
 public:
@@ -19,3 +20,4 @@ public:
 	Vector3& operator/=(float scalar);
 	Vector3& operator=(const Vector3& other);
 };
+#endif
