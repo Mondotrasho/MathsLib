@@ -3,6 +3,8 @@
 
 class vector4 {
 public:
+	vector4() = default;
+	~vector4() = default;
 	union {
 		//struct as xyz accessable with . operator
 		struct {
