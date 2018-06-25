@@ -35,7 +35,7 @@ vector3& vector3::operator /= (float scalar) {
 	x /= scalar; y /= scalar; z /= scalar;
 	return *this;
 }
-//OTHER
+//ASSIGNMENT
 vector3& vector3::operator = (const vector3& other) {
 	x = other.x; y = other.y; z = other.z;
 	return *this;

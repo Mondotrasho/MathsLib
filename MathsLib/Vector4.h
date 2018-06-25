@@ -5,13 +5,15 @@ class vector4 {
 public:
 	vector4() = default;
 	~vector4() = default;
+	vector4(const vector4 &vector) : x(vector.x), y(vector.y), z(vector.z), w(vector.w) {}
+
 	union {
 		//struct as xyz accessable with . operator
 		struct {
 			float x, y, z, w;
 		};
 		//array accessable with [] operator
-		float data[4];
+		float data[4]{}; //  WHYYYYYYYY !!!!{} !!!!
 	};
 
 	float operator[](int index) const; //getter
