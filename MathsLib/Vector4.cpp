@@ -1,4 +1,5 @@
 #include "Vector4.h"
+#include <cmath>
 
 float vector4::operator [] (int index) const { return data[index]; }
 float& vector4::operator [] (int index) { return data[index]; }
@@ -55,4 +56,25 @@ void vector4::zero()
 vector4 vector4::invert() const
 {
 	return vector4(-x, -y, -z, -w);
+}
+
+float vector4::magnitude() const { return sqrt(x*x + y*y + z*z + w*w); }
+float vector4::magnitude_sqr() const { return (x*x + y*y + z*z + w*w); }
+void vector4::normalise() {
+	x /= magnitude();
+	y /= magnitude();
+	z /= magnitude();
+	w /= magnitude();
+}
+vector4 vector4::normalised(vector4) const
+{
+	return{ x / magnitude(), y / magnitude(), z / magnitude(), w / magnitude() };
+}
+
+float vector4::distance(const vector4& other) const {
+	const auto diff_x = x - other.x;
+	const auto diff_y = y - other.y;
+	const auto diff_z = z - other.z;
+	const auto diff_w = w - other.w;
+	return sqrt(diff_x * diff_x + diff_y * diff_y + diff_z * diff_z + diff_w * diff_w);
 }
