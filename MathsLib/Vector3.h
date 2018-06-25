@@ -3,23 +3,29 @@
 
 class vector3 {
 public:
+	//DEFUALT CONSTRUCTORS
 	vector3() = default;
 	~vector3() = default;
+	//ALTERNATIVE  CONSTRUCTORS
 	//Copy
-//	vector3(vector3 &vector) : x(vector.x), y(vector.y), z(vector.z) {}
-
+	vector3(const vector3 &vector) : x(vector.x), y(vector.y), z(vector.z) {}
+	//defined
+	vector3(float xval, float yval, float zval) :x(xval), y(yval), z(zval) {}	
+	
+	//UNION
 	union {
 		//struct as xyz accessable with . operator
 		struct {
 			float x, y, z;
 		};
 		struct {
-			float R, G, B; 
+			float R{}, G{}, B{};
 		};
 		//array accessable with [] operator
-		float data[3]; 
+		float data[3]{}; 
 	};
-
+	
+	//OPERATORS
 	float operator[](int index) const; //getter
 	float& operator[](int index);      //setter
 
