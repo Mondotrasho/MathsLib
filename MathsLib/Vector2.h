@@ -6,7 +6,7 @@ public:
 	vector2() = default;
 	~vector2() = default;
 	//Copy
-	vector2(const vector2 &vector): x(vector.x), y(vector.y){}
+//	vector2(const vector2 &vector): x(vector.x), y(vector.y){}
 
 	union {
 		//struct as xyz accessable with . operator
@@ -14,7 +14,7 @@ public:
 			float x, y;
 		};
 		//array accessable with [] operator
-		float data[2]{}; // NOTE IDK WHAT THE {} DO HERE !!!!!!
+		float data[2]; 
 	};
 
 	float operator[](int index) const; //getter
