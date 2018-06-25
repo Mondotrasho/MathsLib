@@ -16,10 +16,19 @@ public:
 
 	float operator[](int index) const; //getter
 	float& operator[](int index);      //setter
+
 	vector4 operator+(const vector4& other) const;
-	vector4& operator-=(const vector4& other);
+	vector4& operator+=(vector4& other);
+
+	vector4 operator-(const vector4& other) const;
+	vector4& operator-=(vector4& other);
+
 	vector4 operator*(float scalar) const;
+	vector4& operator*=(float scalar);
+
+	vector4 operator/( float scalar) const;
 	vector4& operator/=(float scalar);
+
 	vector4& operator=(const vector4& other);
 };
 #endif
