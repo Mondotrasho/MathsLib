@@ -45,6 +45,7 @@ public:
 	void normalise(); //Normalise me
 	vector2 normalised() const; //Make a new me thats normalised
 	float distance(const vector2& other) const;
+	float distance_sqr(const vector2& other) const;
 	float dot(const vector2& other) const;
 	vector2 get_perpendicular_rh() const;
 	vector2 get_perpendicular_lh() const;

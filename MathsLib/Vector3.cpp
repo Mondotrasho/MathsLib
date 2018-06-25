@@ -71,6 +71,12 @@ float vector3::distance(const vector3& other) const {
 	const auto diff_z = z - other.z;
 	return sqrt(diff_x * diff_x + diff_y * diff_y + diff_z * diff_z);
 }
+float vector3::distance_sqr(const vector3& other) const {
+	const auto diff_x = x - other.x;
+	const auto diff_y = y - other.y;
+	const auto diff_z = z - other.z;
+	return diff_x * diff_x + diff_y * diff_y + diff_z * diff_z;
+}
 
 float vector3::dot(const vector3& other) const {
 	return x * other.x + y * other.y + z * other.z;
@@ -90,3 +96,5 @@ vector3 vector3::cross(const vector3& other) const {
 	// return the angle between them
 	return acos(d);
 }
+
+//ADD GET PERPINDICULAR

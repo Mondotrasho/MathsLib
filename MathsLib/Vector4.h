@@ -46,6 +46,7 @@ public:
 	void normalise(); //Normalise me
 	vector4 normalised() const; //Make a new me thats normalised
 	float distance(const vector4& other) const;
+	float distance_sqr(const vector4& other) const;
 	float dot(const vector4& other) const;
 	float angle_between(const vector4& other) const;
 };

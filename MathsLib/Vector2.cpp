@@ -67,6 +67,11 @@ float vector2::distance(const vector2& other) const {
 	const auto diff_y = y - other.y;
 	return sqrt(diff_x * diff_x + diff_y * diff_y);
 }
+float vector2::distance_sqr(const vector2& other) const {
+	const auto diff_x = x - other.x;
+	const auto diff_y = y - other.y;
+	return diff_x * diff_x + diff_y * diff_y;
+}
 float vector2::dot(const vector2& other) const {
 	return x * other.x + y * other.y;
 }
