@@ -46,7 +46,8 @@ public:
 	vector2 normalised(vector2) const; //Make a new me thats normalised
 	float distance(const vector2& other) const;
 	float dot(const vector2& other) const;
-	vector2 getPerpendicularRH() const;
+	vector2 get_perpendicular_rh() const;
+	vector2 get_perpendicular_lh() const;
 };
 #endif
 #pragma once

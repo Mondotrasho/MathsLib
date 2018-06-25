@@ -70,6 +70,9 @@ float vector2::distance(const vector2& other) const {
 float vector2::dot(const vector2& other) const {
 	return x * other.x + y * other.y;
 }
-vector2 vector2::getPerpendicularRH() const {
+vector2 vector2::get_perpendicular_rh() const {
 	return{ -y, x };
+}
+vector2 vector2::get_perpendicular_lh() const {
+	return{ y, -x };
 }
