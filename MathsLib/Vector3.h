@@ -21,9 +21,13 @@ public:
 	float& operator[](int index);      //setter
 
 	vector3 operator+(const vector3& other) const;
+	vector3& operator+=(const vector3& other);
+	vector3 operator-(const vector3& other) const;
 	vector3& operator-=(const vector3& other);
 
 	vector3 operator*(float scalar) const;
+	vector3& operator*=(float scalar);
+	vector3 operator/(float scalar) const;
 	vector3& operator/=(float scalar);
 
 	vector3& operator=(const vector3& other);
