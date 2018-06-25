@@ -40,7 +40,11 @@ public:
 	//STANDARD OPERATIONS
 	void zero();
 	vector2 invert() const;
-
+	float magnitude() const;
+	float magnitude_sqr() const; //squared
+	void normalise(); //Normalise me
+	vector2 normalised(vector2) const; //Make a new me thats normalised
+	float distance(const vector2& other) const;
 };
 #endif
 #pragma once
