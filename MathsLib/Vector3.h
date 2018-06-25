@@ -40,5 +40,9 @@ public:
 	vector3& operator/=(float scalar);
 
 	vector3& operator=(const vector3& other);
+
+	//STANDARD OPERATIONS
+	void zero();
+	vector3 invert() const;
 };
 #endif

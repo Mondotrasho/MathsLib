@@ -44,3 +44,15 @@ vector4& vector4::operator = (const vector4& other) {
 	return *this;
 }
 
+void vector4::zero()
+{
+	x = 0;
+	y = 0;
+	z = 0;
+	w = 0;
+}
+
+vector4 vector4::invert() const
+{
+	return vector4(-x, -y, -z, -w);
+}

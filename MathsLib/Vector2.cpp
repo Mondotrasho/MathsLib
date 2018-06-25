@@ -39,3 +39,14 @@ vector2& vector2::operator = (const vector2& other) {
 	x = other.x; y = other.y;
 	return *this;
 }
+
+void vector2::zero()
+{
+	x = 0;
+	y = 0;
+}
+
+vector2 vector2::invert() const
+{
+	return vector2(-x, -y);
+}

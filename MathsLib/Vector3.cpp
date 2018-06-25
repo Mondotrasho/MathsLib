@@ -40,3 +40,15 @@ vector3& vector3::operator = (const vector3& other) {
 	x = other.x; y = other.y; z = other.z;
 	return *this;
 }
+
+void vector3::zero()
+{
+	x = 0;
+	y = 0;
+	z = 0;
+}
+
+vector3 vector3::invert() const
+{
+	return vector3(-x, -y, -z);
+}

@@ -36,6 +36,11 @@ public:
 	vector2& operator/=(float scalar);
 
 	vector2& operator=(const vector2& other);
+
+	//STANDARD OPERATIONS
+	void zero();
+	vector2 invert() const;
+
 };
 #endif
 #pragma once
