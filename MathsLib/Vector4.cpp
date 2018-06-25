@@ -82,3 +82,4 @@ float vector4::distance(const vector4& other) const {
 float vector4::dot(const vector4& other) const {
 	return x * other.x + y * other.y + z * other.z + w * other.w;
 }
+

@@ -47,8 +47,10 @@ public:
 	float magnitude() const;
 	float magnitude_sqr() const; //squared
 	void normalise(); //Normalise me
-	vector3 normalised(vector3) const; //Make a new me thats normalised
+	vector3 normalised() const; //Make a new me thats normalised
 	float distance(const vector3& other) const;
 	float dot(const vector3& other) const;
+	vector3 cross(const vector3& other) const;
+	float angleBetween(const vector3& other) const;
 };
 #endif

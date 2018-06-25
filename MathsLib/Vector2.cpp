@@ -57,7 +57,7 @@ void vector2::normalise() {
 	x /= magnitude();
 	y /= magnitude();
 }
-vector2 vector2::normalised(vector2) const
+vector2 vector2::normalised() const
 {
 	return{ x / magnitude(), y / magnitude()};
 }
