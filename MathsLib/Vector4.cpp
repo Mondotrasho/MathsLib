@@ -66,7 +66,7 @@ void vector4::normalise() {
 	z /= magnitude();
 	w /= magnitude();
 }
-vector4 vector4::normalised(vector4) const
+vector4 vector4::normalised() const
 {
 	return{ x / magnitude(), y / magnitude(), z / magnitude(), w / magnitude() };
 }
@@ -83,3 +83,12 @@ float vector4::dot(const vector4& other) const {
 	return x * other.x + y * other.y + z * other.z + w * other.w;
 }
 
+float vector4::angle_between(const vector4& other) const {
+	// normalise the vectors
+	const auto a = normalised();
+	const auto b = other.normalised();
+	// calculate the dot product
+	float d = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
+	// return the angle between them
+	return acos(d);
+}
