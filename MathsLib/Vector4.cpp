@@ -78,3 +78,7 @@ float vector4::distance(const vector4& other) const {
 	const auto diff_w = w - other.w;
 	return sqrt(diff_x * diff_x + diff_y * diff_y + diff_z * diff_z + diff_w * diff_w);
 }
+
+float vector4::dot(const vector4& other) const {
+	return x * other.x + y * other.y + z * other.z + w * other.w;
+}

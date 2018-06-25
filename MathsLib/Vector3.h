@@ -49,5 +49,6 @@ public:
 	void normalise(); //Normalise me
 	vector3 normalised(vector3) const; //Make a new me thats normalised
 	float distance(const vector3& other) const;
+	float dot(const vector3& other) const;
 };
 #endif
