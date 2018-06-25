@@ -48,6 +48,7 @@ public:
 	float dot(const vector2& other) const;
 	vector2 get_perpendicular_rh() const;
 	vector2 get_perpendicular_lh() const;
+	float angle_between(const vector2& other) const;
 };
 #endif
 #pragma once

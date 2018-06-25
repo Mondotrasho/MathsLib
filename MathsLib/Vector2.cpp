@@ -76,3 +76,12 @@ vector2 vector2::get_perpendicular_rh() const {
 vector2 vector2::get_perpendicular_lh() const {
 	return{ y, -x };
 }
+float vector2::angle_between(const vector2& other) const {
+	// normalise the vectors
+	const auto a = normalised();
+	const auto b = other.normalised();
+	// calculate the dot product
+	float d = a.x * b.x + a.y * b.y;
+	// return the angle between them
+	return acos(d);
+}
