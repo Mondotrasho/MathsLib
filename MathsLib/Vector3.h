@@ -51,6 +51,6 @@ public:
 	float distance(const vector3& other) const;
 	float dot(const vector3& other) const;
 	vector3 cross(const vector3& other) const;
-	float angleBetween(const vector3& other) const;
+	float angle_between(const vector3& other) const;
 };
 #endif

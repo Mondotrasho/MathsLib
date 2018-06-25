@@ -81,10 +81,10 @@ vector3 vector3::cross(const vector3& other) const {
 		y * other.z - z * other.y,
 		z * other.x - x * other.z,
 		x * other.y - y * other.x };
-}float vector3::angleBetween(const vector3& other) const {
+}float vector3::angle_between(const vector3& other) const {
 	// normalise the vectors
-	vector3 a = normalised();
-	vector3 b = other.normalised();
+	const auto a = normalised();
+	const auto b = other.normalised();
 	// calculate the dot product
 	float d = a.x * b.x + a.y * b.y + a.z * b.z;
 	// return the angle between them
