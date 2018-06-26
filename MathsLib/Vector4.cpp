@@ -1,6 +1,22 @@
 #include "Vector4.h"
 #include <cmath>
 
+vector4::vector4()
+{
+}
+
+vector4::~vector4()
+{
+}
+
+vector4::vector4(const vector4& vector): x(vector.x), y(vector.y), z(vector.z), w(vector.w)
+{
+}
+
+vector4::vector4(float xval, float yval, float zval, float wval): x(xval), y(yval), z(zval), w(wval)
+{
+}
+
 float vector4::operator [] (int index) const { return data[index]; }
 float& vector4::operator [] (int index) { return data[index]; }
 //ADDITION

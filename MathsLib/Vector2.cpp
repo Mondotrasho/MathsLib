@@ -1,6 +1,22 @@
 #include "Vector2.h"
 #include <cmath>
 
+vector2::vector2()
+{
+}
+
+vector2::~vector2()
+{
+}
+
+vector2::vector2(const vector2& vector): x(vector.x), y(vector.y)
+{
+}
+
+vector2::vector2(float xval, float yval): x(xval), y(yval)
+{
+}
+
 float vector2::operator [] (int index) const { return data[index]; }
 float& vector2::operator [] (int index) { return data[index]; }
 //ADDITION

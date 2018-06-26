@@ -1,6 +1,20 @@
 #include "Vector3.h"
 #include <cmath>
 
+vector3::vector3()
+= default;
+
+vector3::~vector3()
+= default;
+
+vector3::vector3(const vector3& vector): x(vector.x), y(vector.y), z(vector.z)
+{
+}
+
+vector3::vector3(float xval, float yval, float zval): x(xval), y(yval), z(zval)
+{
+}
+
 float vector3::operator [] (int index) const { return data[index]; }
 float& vector3::operator [] (int index) { return data[index]; }
 //ADDITION
