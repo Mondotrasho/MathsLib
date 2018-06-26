@@ -7,6 +7,10 @@ class matrix3
 public:
 	matrix3();
 	~matrix3();
+	//Copy
+	matrix3(const matrix3& matrix);
+	//defined
+	matrix3(const vector3& new_x_ax, const vector3& new_y_ax, const vector3& new_z_ax);
 	union {
 		struct {
 			vector3 x_axis;

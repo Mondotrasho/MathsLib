@@ -5,6 +5,14 @@ matrix3::matrix3() = default;
 
 matrix3::~matrix3() = default;
 
+matrix3::matrix3(const matrix3& matrix) : x_axis(matrix.x_axis), y_axis(matrix.y_axis), z_axis(matrix.z_axis)
+{
+}
+
+matrix3::matrix3(const vector3& new_x_ax, const vector3& new_y_ax, const vector3& new_z_ax) : x_axis(new_x_ax), y_axis(new_y_ax), z_axis(new_z_ax)
+{
+}
+
 // reference access so it can be modified
 vector3& matrix3::operator [] (const int index) {
 	return axis[index];
@@ -12,7 +20,9 @@ vector3& matrix3::operator [] (const int index) {
 // const access for read-only
 const vector3& matrix3::operator [] (const int index) const {
 	return axis[index];
-}// binary * operator
+}
+
+// binary * operator
 matrix3 matrix3::operator * (const matrix3& other) const {
 	matrix3 result;
 	for (int r = 0; r < 3; ++r) {

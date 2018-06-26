@@ -16,7 +16,8 @@ public:
 		};
 		vector4 axis[4];
 		float data[4][4];
-	};
+	};
+
 	vector4& operator[](int index);
 	const vector4& operator[](int index) const;
 };
