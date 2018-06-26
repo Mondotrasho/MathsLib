@@ -1,13 +1,12 @@
 #include "Vector2.h"
 #include <cmath>
 
-vector2::vector2()
+vector2::vector2(): data{0,0}
 {
 }
 
 vector2::~vector2()
-{
-}
+= default;
 
 vector2::vector2(const vector2& vector): x(vector.x), y(vector.y)
 {

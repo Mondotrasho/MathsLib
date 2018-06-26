@@ -1,13 +1,12 @@
 #include "Vector4.h"
 #include <cmath>
 
-vector4::vector4()
+vector4::vector4() : data{ 0, 0, 0, 0 }
 {
 }
 
 vector4::~vector4()
-{
-}
+= default;
 
 vector4::vector4(const vector4& vector): x(vector.x), y(vector.y), z(vector.z), w(vector.w)
 {

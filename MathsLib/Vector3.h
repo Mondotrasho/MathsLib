@@ -10,6 +10,7 @@ public:
 	//Copy
 	vector3(const vector3& vector);
 	//defined
+	//vector3(const float a, const float b, const float c);
 	vector3(float xval, float yval, float zval);
 
 	//UNION

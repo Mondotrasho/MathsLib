@@ -7,7 +7,10 @@ class matrix2
 public:
 	matrix2();
 	~matrix2();
-	
+	matrix2(const matrix2& matrix);
+	matrix2(const vector2& new_x_ax, const vector2& new_y_ax, const vector2& new_z_ax);
+	matrix2(float a, float b, float c, float d);
+
 	union {
 		struct {
 			vector2 x_axis;
@@ -18,7 +21,8 @@ public:
 	};
 
 	vector2& operator[](int index);
-	const vector2& operator[](int index) const;
+	const vector2& operator[](int index) const;
+
 };
 
 #endif

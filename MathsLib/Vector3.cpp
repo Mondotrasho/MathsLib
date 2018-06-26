@@ -1,8 +1,9 @@
 #include "Vector3.h"
 #include <cmath>
 
-vector3::vector3()
-= default;
+vector3::vector3() :data{ 0,0,0 }
+{
+}
 
 vector3::~vector3()
 = default;
@@ -11,7 +12,12 @@ vector3::vector3(const vector3& vector): x(vector.x), y(vector.y), z(vector.z)
 {
 }
 
-vector3::vector3(float xval, float yval, float zval): x(xval), y(yval), z(zval)
+
+//vector3::vector3(const float a, const float b, const float c) : data{ a,b,c }
+//{
+//}
+
+vector3::vector3(const float xval, const float yval, const float zval) : x(xval), y(yval), z(zval)
 {
 }
 
