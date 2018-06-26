@@ -26,8 +26,10 @@ public:
 	float operator[](int index) const; //getter
 	float& operator[](int index);      //setter
 	vector2 operator+(const vector2& other) const;
+	vector2 operator+(float other) const;
 	vector2& operator+=(const vector2& other);
 	vector2 operator-(const vector2& other) const;
+	vector2 operator-(float other) const;
 	vector2& operator-=(const vector2& other);
 
 	vector2 operator*(float scalar) const;

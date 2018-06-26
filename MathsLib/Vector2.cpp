@@ -5,7 +5,10 @@ float vector2::operator [] (int index) const { return data[index]; }
 float& vector2::operator [] (int index) { return data[index]; }
 //ADDITION
 vector2 vector2::operator + (const vector2& other) const {
-	return{ x + other.x, y + other.y};
+	return{ x + other.x, y + other.y };
+}
+vector2 vector2::operator + (const float other) const {
+	return{ x + other, y + other };
 }
 vector2& vector2::operator += (const vector2& other) {
 	x += other.x; y += other.y;
@@ -14,6 +17,9 @@ vector2& vector2::operator += (const vector2& other) {
 //SUBTRACTION
 vector2 vector2::operator - (const vector2& other) const {
 	return{ x - other.x, y - other.y };
+}
+vector2 vector2::operator - (const float other) const {
+	return{ x - other, y - other };
 }
 vector2& vector2::operator -= (const vector2& other) {
 	x -= other.x; y -= other.y;
@@ -52,7 +58,8 @@ vector2 vector2::invert() const
 	return vector2(-x, -y);
 }
 float vector2::magnitude() const { return sqrt(x*x + y*y); }
-float vector2::magnitude_sqr() const { return (x*x + y*y); }
+float vector2::magnitude_sqr() const { return (x*x + y*y); }
+
 void vector2::normalise() {
 	x /= magnitude();
 	y /= magnitude();

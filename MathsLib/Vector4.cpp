@@ -7,7 +7,9 @@ float& vector4::operator [] (int index) { return data[index]; }
 vector4 vector4::operator + (const vector4& other) const {
 	return{ x + other.x, y + other.y, z + other.z,w + other.w };
 }
-
+vector4 vector4::operator  + (const float other) const{
+	return{ x + other, y + other, z + other,w + other };
+}
 vector4& vector4::operator +=( vector4& other) {
 	x += other.x; y += other.y; z += other.z, w += other.w;
 	return *this;
@@ -18,10 +20,18 @@ vector4 vector4::operator - (const vector4& other) const
 	return{ x - other.x, y - other.y, z - other.z,w - other.w };
 
 }
+vector4 vector4::operator - (const float other) const
+{
+	return{ x - other, y - other, z - other,w - other };
+
+}
 vector4& vector4::operator -= (vector4& other)  {
 	x -= other.x; y -= other.y; z -= other.z, w -= other.w;
 	return *this;
 }
+
+
+
 //MULTIPLICATION
 vector4 vector4::operator * (float scalar) const {
 	return{ x * scalar, y * scalar, z * scalar,w * scalar };
@@ -59,7 +69,8 @@ vector4 vector4::invert() const
 }
 
 float vector4::magnitude() const { return sqrt(x*x + y*y + z*z + w*w); }
-float vector4::magnitude_sqr() const { return (x*x + y*y + z*z + w*w); }
+float vector4::magnitude_sqr() const { return (x*x + y*y + z*z + w*w); }
+
 void vector4::normalise() {
 	x /= magnitude();
 	y /= magnitude();
