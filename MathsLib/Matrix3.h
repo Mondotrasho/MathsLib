@@ -17,6 +17,11 @@ public:
 			vector3 x_axis;
 			vector3 y_axis;
 			vector3 z_axis;
+			union {
+				vector3 zAxis;
+				vector3 translation;
+			};
+
 		};
 		vector3 axis[3];
 		float data[3][3];
@@ -30,6 +35,12 @@ public:
 	vector3 operator*(const vector3& v) const;
 
 	matrix3 transposed() const;
+	void set_element(int r, int c, int e);
+	int get_element(int r, int c);
+	void set_column(int c, vector3 vec);
+	vector3 get_column(int c);
+	void set_row(int r, vector3 vec);
+	vector3 get_row(int r);
 };
 
 #endif

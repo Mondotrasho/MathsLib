@@ -17,10 +17,13 @@ public:
 	union {
 		//struct as xyz accessable with . operator
 		struct {
-			float x , y , z ;
+			float x, y, z;
+			union {
+				float z, w;
+			};
 		};
 		struct {
-			float R , G , B ;
+			float R, G, B;
 		};
 		//array accessable with [] operator
 		float data[3] ; 

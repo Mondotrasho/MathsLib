@@ -66,3 +66,39 @@ matrix3 matrix3::transposed() const {
 			result.data[r][c] = data[c][r];
 	return result;
 }
+
+void matrix3::set_element(int r, int c, int e) {
+	data[r][c] = e;
+};
+
+int matrix3::get_element(int r, int c) {
+	return data[r][c];
+}
+
+void matrix3::set_column(int c, vector3 vec) {
+	for (int i = 0; i<3; i++) {
+		data[i][c] = vec[i];
+	}
+}
+
+vector3 matrix3::get_column(int c) {
+	vector3 output;
+	for (int i = 0; i<3; i++) {
+		output[i] = data[i][c];
+	}
+	return output;
+}
+
+void matrix3::set_row(int r, vector3 vec) {
+	for (int i = 0; i<3; i++) {
+		data[r][i] = vec[i];
+	}
+}
+
+vector3 matrix3::get_row(int r) {
+	vector3 output;
+	for (int i = 0; i<3; i++) {
+		output[i] = data[r][i];
+	}
+	return output;
+}
