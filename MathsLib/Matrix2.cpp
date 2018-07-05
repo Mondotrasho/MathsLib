@@ -19,6 +19,11 @@ matrix2::matrix2(const float a, const float b, const float c, const float d) : d
 {
 }
 
+
+// create a static const identity matrix
+const matrix2 matrix2::identity = matrix2(1, 0, 0, 1);
+
+
 // reference access so it can be modified
 vector2& matrix2::operator [] (const int index) {
 	return axis[index];
@@ -48,5 +53,14 @@ vector2 matrix2::operator * (const vector2& v) const {
 			data[0][r] * v[0] +
 			data[1][r] * v[1];
 	}
+	return result;
+}
+
+matrix2 matrix2::transposed() const {
+	matrix2 result;
+	// flip row and column
+	for (int r = 0; r < 2; ++r)
+		for (int c = 0; c < 2; ++c)
+			result.data[r][c] = data[c][r];
 	return result;
 }

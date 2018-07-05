@@ -12,6 +12,7 @@ public:
 	//defined
 	matrix2(const vector2& new_x_ax, const vector2& new_y_ax, const vector2& new_z_ax);
 	matrix2(float a, float b, float c, float d);
+	static const matrix2 identity;
 
 	union {
 		struct {
@@ -26,6 +27,7 @@ public:
 	const vector2& operator[](int index) const;
 	matrix2 operator*(const matrix2& other) const;
 	vector2 operator*(const vector2& v) const;
+	matrix2 transposed() const;
 };
 
 #endif

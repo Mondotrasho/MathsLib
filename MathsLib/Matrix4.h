@@ -11,6 +11,7 @@ public:
 	matrix4(const vector4& new_x_ax, const vector4& new_y_ax, const vector4& new_z_ax, const vector4& new_w_ax);
 	matrix4(float a, float b, float c, float d, float e, float f, float g, float h, float i, float j, float k, float l,
 	        float m, float n, float o, float p);
+	static const matrix4 identity;
 
 	union {
 		struct {
@@ -31,6 +32,7 @@ public:
 	const vector4& operator[](int index) const;
 	matrix4 operator*(const matrix4& other) const;
 	vector4 operator*(const vector4& v) const;
+	matrix4 transposed() const;
 };
 
 #endif

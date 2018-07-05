@@ -20,6 +20,11 @@ matrix4::matrix4(const float a, const float b, const float c, const float d, con
 {
 }
 
+
+// create a static const identity matrix
+const matrix4 matrix4::identity = matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+
+
 // reference access so it can be modified
 vector4& matrix4::operator [] (const int index) {
 	return axis[index];
@@ -52,5 +57,14 @@ vector4 matrix4::operator * (const vector4& v) const {
 			data[2][r] * v[2] +
 			data[3][r] * v[3];
 	}
+	return result;
+}
+
+matrix4 matrix4::transposed() const {
+	matrix4 result;
+	// flip row and column
+	for (int r = 0; r < 4; ++r)
+		for (int c = 0; c < 4; ++c)
+			result.data[r][c] = data[c][r];
 	return result;
 }
