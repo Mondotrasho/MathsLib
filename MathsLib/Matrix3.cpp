@@ -82,19 +82,19 @@ void matrix3::set_element(const int r, const int c, const int e) {
 	data[r][c] = e;
 };
 
-int matrix3::get_element(int r, int c) {
+int matrix3::get_element(const int r, const int c) {
 	return data[r][c];
 }
 
-void matrix3::set_column(int c, vector3& vec) {
-	for (int i = 0; i<3; i++) {
+void matrix3::set_column(const int c, vector3& vec) {
+	for (auto i = 0; i<3; i++) {
 		data[i][c] = vec[i];
 	}
 }
 
-vector3 matrix3::get_column(int c) {
+vector3 matrix3::get_column(const int c) {
 	vector3 output;
-	for (int i = 0; i<3; i++) {
+	for (auto i = 0; i<3; i++) {
 		output[i] = data[i][c];
 	}
 	return output;

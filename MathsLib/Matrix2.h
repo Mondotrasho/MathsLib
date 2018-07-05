@@ -27,7 +27,22 @@ public:
 	const vector2& operator[](int index) const;
 	matrix2 operator*(const matrix2& other) const;
 	vector2 operator*(const vector2& v) const;
+	matrix2& operator=(const matrix2& other);
 	matrix2 transposed() const;
+	void set_element(int r, int c, int e);
+	int get_element(int r, int c);
+	void set_column(int c, vector2& vec);
+	vector2 get_column(int c);
+	void set_row(int r, vector2& vec);
+	vector2 get_row(int r);
+	matrix2& operator+=(const matrix2& m);
+	matrix2& operator-=(const matrix2& m);
+	void set_scaled(float x, float y);
+	void set_scaled(const vector2& v);
+	void scale(float x, float y);
+	void scale(const vector2& v);
+	void set_rotate(float radians);
+	void rotate(float radians);
 };
 
 #endif
