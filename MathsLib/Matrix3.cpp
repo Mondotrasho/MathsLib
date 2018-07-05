@@ -1,4 +1,5 @@
 #include "Matrix3.h"
+#include <cmath>
 
 
 matrix3::matrix3():data{ { 0,0,0 },{ 0,0,0 },{ 0,0,0 } }
@@ -49,7 +50,7 @@ matrix3 matrix3::operator * (const matrix3& other) const {
 
 vector3 matrix3::operator * (const vector3& v) const {
 	vector3 result;
-	for (int r = 0; r < 3; ++r) {
+	for (auto r = 0; r < 3; ++r) {
 		result[r] = 
 			data[0][r] * v[0] +
 			data[1][r] * v[1] +
@@ -58,16 +59,26 @@ vector3 matrix3::operator * (const vector3& v) const {
 	return result;
 }
 
+matrix3& matrix3::operator=(const matrix3& other)
+{
+	x_axis = other.x_axis; 
+	y_axis = other.y_axis; 
+	z_axis = other.z_axis;
+		
+	return *this;
+	
+}
+
 matrix3 matrix3::transposed() const {
 	matrix3 result;
 	// flip row and column
-	for (int r = 0; r < 3; ++r)
-		for (int c = 0; c < 3; ++c)
+	for (auto r = 0; r < 3; ++r)
+		for (auto c = 0; c < 3; ++c)
 			result.data[r][c] = data[c][r];
 	return result;
 }
 
-void matrix3::set_element(int r, int c, int e) {
+void matrix3::set_element(const int r, const int c, const int e) {
 	data[r][c] = e;
 };
 
@@ -75,7 +86,7 @@ int matrix3::get_element(int r, int c) {
 	return data[r][c];
 }
 
-void matrix3::set_column(int c, vector3 vec) {
+void matrix3::set_column(int c, vector3& vec) {
 	for (int i = 0; i<3; i++) {
 		data[i][c] = vec[i];
 	}
@@ -89,16 +100,102 @@ vector3 matrix3::get_column(int c) {
 	return output;
 }
 
-void matrix3::set_row(int r, vector3 vec) {
-	for (int i = 0; i<3; i++) {
+void matrix3::set_row(const int r, vector3& vec) {
+	for (auto i = 0; i<3; i++) {
 		data[r][i] = vec[i];
 	}
 }
 
-vector3 matrix3::get_row(int r) {
+vector3 matrix3::get_row(const int r) {
 	vector3 output;
-	for (int i = 0; i<3; i++) {
+	for (auto i = 0; i<3; i++) {
 		output[i] = data[r][i];
 	}
 	return output;
+}
+
+matrix3& matrix3::operator+=(const matrix3& m)
+{
+	for (auto i = 0; i < 3; ++i) {
+		for (auto j = 0; j < 3; ++j) {
+			data[i][j] += m.data[i][j];
+		}
+	}
+	return *this;
+}
+
+
+matrix3& matrix3::operator-=(const matrix3& m)
+{
+	for (auto i = 0; i < 3; ++i) {
+		for (auto j = 0; j < 3; ++j) {
+			data[i][j] -= m.data[i][j];
+		}
+	}
+	return *this;
+}
+
+void matrix3::set_scaled(float x, float y, float z) {
+	// set scale of each axis
+	x_axis = { x, 0, 0 };
+	y_axis = { 0, y, 0 };
+	z_axis = { 0, 0, z };
+}void matrix3::set_scaled(const vector3& v) {
+	// set scale of each axis
+	x_axis = { v.x, 0, 0 };
+	y_axis = { 0, v.y, 0 };
+	z_axis = { 0, 0, v.z };
+}void matrix3::scale(const float x, const float y, const float z) {
+	matrix3 m;
+	m.set_scaled(x, y, z);
+	*this = *this * m;
+}void matrix3::scale(const vector3& v) {
+	matrix3 m;
+	m.set_scaled(v.x, v.y, v.z);
+	*this = *this * m;
+}
+
+
+void matrix3::set_rotate_x(const float radians) {
+	// leave X axis and elements unchanged
+	x_axis = { 1, 0, 0 };
+	y_axis = { 0, cosf(radians), sinf(radians) };
+	z_axis = { 0, -sinf(radians), cosf(radians) };
+}
+void matrix3::rotate_x(const float radians) {
+	matrix3 m;
+	m.set_rotate_x(radians);
+	*this = *this * m;
+}
+void matrix3::set_rotate_y(const float radians) {
+	// leave X axis and elements unchanged
+	x_axis = { cosf(radians), 0,-sinf(radians) };
+	y_axis = { 0, 1, 0 };
+	z_axis = { sinf(radians),0 , cosf(radians) };
+}
+void matrix3::rotate_y(const float radians) {
+	matrix3 m;
+	m.set_rotate_y(radians);
+	*this = *this * m;
+}
+void matrix3::set_rotate_z(const float radians) {
+	// leave X axis and elements unchanged
+	x_axis = { cosf(radians), -sinf(radians), 0 };
+	y_axis = { sinf(radians), cosf(radians),0  };
+	z_axis = { 0, 0,1  };
+}
+void matrix3::rotate_z(const float radians) {
+	matrix3 m;
+	m.set_rotate_z(radians);
+	*this = *this * m;
+}
+
+
+void matrix3::set_euler(const float pitch, const float yaw, const float roll) {
+	matrix3 x, y, z;
+	x.set_rotate_x(pitch);
+	y.set_rotate_y(yaw);
+	z.set_rotate_z(roll);
+	// combine rotations in a specific order
+	*this = z * y * x;
 }

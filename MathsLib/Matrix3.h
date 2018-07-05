@@ -34,14 +34,29 @@ public:
 	const vector3& operator[](int index) const;
 	matrix3 operator*(const matrix3& other) const;
 	vector3 operator*(const vector3& v) const;
+	matrix3& operator=(const matrix3&);
+
 
 	matrix3 transposed() const;
 	void set_element(int r, int c, int e);
 	int get_element(int r, int c);
-	void set_column(int c, vector3 vec);
+	void set_column(int c, vector3& vec);
 	vector3 get_column(int c);
-	void set_row(int r, vector3 vec);
+	void set_row(int r, vector3& vec);
 	vector3 get_row(int r);
+	matrix3& operator+=(const matrix3& m);
+	matrix3& operator-=(const matrix3& m);
+	void set_scaled(float x, float y, float z);
+	void set_scaled(const vector3& v);
+	void scale(float x, float y, float z);
+	void scale(const vector3& v);
+	void rotate_y(float radians);
+	void set_rotate_z(float radians);
+	void rotate_z(float radians);
+	void set_rotate_x(float radians);
+	void rotate_x(float radians);
+	void set_rotate_y(float radians);
+	void set_euler(float pitch, float yaw, float roll);
 };
 
 #endif
