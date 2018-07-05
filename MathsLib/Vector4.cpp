@@ -1,7 +1,7 @@
 #include "Vector4.h"
 #include <cmath>
 
-vector4::vector4() : data{ 0, 0, 0, 0 }
+vector4::vector4() : data{ 0, 0, 0, 0 } 
 {
 }
 

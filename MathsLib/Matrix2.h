@@ -7,7 +7,9 @@ class matrix2
 public:
 	matrix2();
 	~matrix2();
+	//copy
 	matrix2(const matrix2& matrix);
+	//defined
 	matrix2(const vector2& new_x_ax, const vector2& new_y_ax, const vector2& new_z_ax);
 	matrix2(float a, float b, float c, float d);
 
@@ -22,7 +24,8 @@ public:
 
 	vector2& operator[](int index);
 	const vector2& operator[](int index) const;
-
+	matrix2 operator*(const matrix2& other) const;
+	vector2 operator*(const vector2& v) const;
 };
 
 #endif

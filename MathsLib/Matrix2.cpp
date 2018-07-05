@@ -27,3 +27,26 @@ vector2& matrix2::operator [] (const int index) {
 const vector2& matrix2::operator [] (const int index) const {
 	return axis[index];
 }
+
+// binary * operator
+matrix2 matrix2::operator * (const matrix2& other) const {
+	matrix2 result;
+	for (auto r = 0; r < 2; ++r) {
+		for (auto c = 0; c < 2; ++c) {
+			result.data[c][r] =
+				data[0][r] * other.data[c][0] +
+				data[1][r] * other.data[c][1];
+		}
+	}
+	return result;
+}
+
+vector2 matrix2::operator * (const vector2& v) const {
+	vector2 result;
+	for (int r = 0; r < 2; ++r) {
+		result[r] =
+			data[0][r] * v[0] +
+			data[1][r] * v[1];
+	}
+	return result;
+}

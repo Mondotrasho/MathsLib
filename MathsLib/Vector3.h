@@ -18,9 +18,12 @@ public:
 		//struct as xyz accessable with . operator
 		struct {
 			float x, y, z;
-			union {
-				float z, w;
-			};
+			//union {
+			//	float z, w;
+			//};
+		};
+		struct {
+			float position, velocity, acceleration;
 		};
 		struct {
 			float R, G, B;

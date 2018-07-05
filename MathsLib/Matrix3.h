@@ -16,14 +16,15 @@ public:
 		struct {
 			vector3 x_axis;
 			vector3 y_axis;
-			vector3 z_axis;
+			//vector3 z_axis;	
 			union {
-				vector3 zAxis;
-				vector3 translation;
+				vector3 z_axis;
+				vector3 t_axis;
 			};
 
 		};
 		vector3 axis[3];
+		float data_alt[9];
 		float data[3][3];
 	};
 
