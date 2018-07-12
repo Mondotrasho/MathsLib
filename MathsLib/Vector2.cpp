@@ -1,110 +1,110 @@
 #include "Vector2.h"
 #include <cmath>
 
-vector2::vector2(): data{0,0}
+Vector2::Vector2(): data{0,0}
 {
 }
 
-vector2::~vector2()
+Vector2::~Vector2()
 = default;
 
-vector2::vector2(const vector2& vector): x(vector.x), y(vector.y)
+Vector2::Vector2(const Vector2& Vector): x(Vector.x), y(Vector.y)
 {
 }
 
-vector2::vector2(float xval, float yval): x(xval), y(yval)
+Vector2::Vector2(float xval, float yval): x(xval), y(yval)
 {
 }
 
-float vector2::operator [] (int index) const { return data[index]; }
-float& vector2::operator [] (int index) { return data[index]; }
+float Vector2::operator [] (int index) const { return data[index]; }
+float& Vector2::operator [] (int index) { return data[index]; }
 //ADDITION
-vector2 vector2::operator + (const vector2& other) const {
+Vector2 Vector2::operator + (const Vector2& other) const {
 	return{ x + other.x, y + other.y };
 }
-vector2 vector2::operator + (const float other) const {
+Vector2 Vector2::operator + (const float other) const {
 	return{ x + other, y + other };
 }
-vector2& vector2::operator += (const vector2& other) {
+Vector2& Vector2::operator += (const Vector2& other) {
 	x += other.x; y += other.y;
 	return *this;
 }
 //SUBTRACTION
-vector2 vector2::operator - (const vector2& other) const {
+Vector2 Vector2::operator - (const Vector2& other) const {
 	return{ x - other.x, y - other.y };
 }
-vector2 vector2::operator - (const float other) const {
+Vector2 Vector2::operator - (const float other) const {
 	return{ x - other, y - other };
 }
-vector2& vector2::operator -= (const vector2& other) {
+Vector2& Vector2::operator -= (const Vector2& other) {
 	x -= other.x; y -= other.y;
 	return *this;
 }
 //MULTIPLICATION
-vector2 vector2::operator * (float scalar) const {
+Vector2 Vector2::operator * (float scalar) const {
 	return{ x * scalar, y * scalar };
 }
-vector2& vector2::operator *= (float scalar) {
+Vector2& Vector2::operator *= (float scalar) {
 	x *= scalar; y *= scalar;
 	return *this;
 }
 //DICISION
-vector2 vector2::operator / (float scalar) const {
+Vector2 Vector2::operator / (float scalar) const {
 	return{ x / scalar, y / scalar };
 }
-vector2& vector2::operator /= (float scalar) {
+Vector2& Vector2::operator /= (float scalar) {
 	x /= scalar; y /= scalar;
 	return *this;
 }
 //ASSIGNMENT
-vector2& vector2::operator = (const vector2& other) {
+Vector2& Vector2::operator = (const Vector2& other) {
 	x = other.x; y = other.y;
 	return *this;
 }
 
-void vector2::zero()
+void Vector2::zero()
 {
 	x = 0;
 	y = 0;
 }
 
-vector2 vector2::invert() const
+Vector2 Vector2::invert() const
 {
-	return vector2(-x, -y);
+	return Vector2(-x, -y);
 }
-float vector2::magnitude() const { return sqrt(x*x + y*y); }
-float vector2::magnitude_sqr() const { return (x*x + y*y); }
+float Vector2::magnitude() const { return sqrt(x*x + y*y); }
+float Vector2::magnitude_sqr() const { return (x*x + y*y); }
 
-void vector2::normalise() {
+void Vector2::normalise() {
 	x /= magnitude();
 	y /= magnitude();
 }
-vector2 vector2::normalised() const
+Vector2 Vector2::normalised() const
 {
 	return{ x / magnitude(), y / magnitude()};
 }
 
-float vector2::distance(const vector2& other) const {
+float Vector2::distance(const Vector2& other) const {
 	const auto diff_x = x - other.x;
 	const auto diff_y = y - other.y;
 	return sqrt(diff_x * diff_x + diff_y * diff_y);
 }
-float vector2::distance_sqr(const vector2& other) const {
+float Vector2::distance_sqr(const Vector2& other) const {
 	const auto diff_x = x - other.x;
 	const auto diff_y = y - other.y;
 	return diff_x * diff_x + diff_y * diff_y;
 }
-float vector2::dot(const vector2& other) const {
+float Vector2::dot(const Vector2& other) const {
 	return x * other.x + y * other.y;
 }
-vector2 vector2::get_perpendicular_rh() const {
+Vector2 Vector2::get_perpendicular_rh() const {
 	return{ -y, x };
 }
-vector2 vector2::get_perpendicular_lh() const {
+Vector2 Vector2::get_perpendicular_lh() const {
 	return{ y, -x };
 }
-float vector2::angle_between(const vector2& other) const {
-	// normalise the vectors
+float Vector2::angle_between(const Vector2& other) const {
+	// normalise the Vectors
 	const auto a = normalised();
 	const auto b = other.normalised();
 	// calculate the dot product

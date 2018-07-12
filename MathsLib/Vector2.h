@@ -1,16 +1,16 @@
-#ifndef _VECTOR2_H_
-#define _VECTOR2_H_
+#ifndef _Vector2_H_
+#define _Vector2_H_
 
-class vector2 {
+class Vector2 {
 public:
 	//DEFUALT CONSTRUCTORS
-	vector2();
-	~vector2();
+	Vector2();
+	~Vector2();
 	//ALTERNATIVE  CONSTRUCTORS
 	//Copy
-	vector2(const vector2& vector);
+	Vector2(const Vector2& Vector);
 	//defined
-	vector2(float xval, float yval);
+	Vector2(float xval, float yval);
 
 	//UNION
 	union {
@@ -29,33 +29,33 @@ public:
 	float operator[](int index) const; //getter
 	float& operator[](int index);      //setter
 
-	vector2 operator+(const vector2& other) const;
-	vector2 operator+(float other) const;
-	vector2& operator+=(const vector2& other);
-	vector2 operator-(const vector2& other) const;
-	vector2 operator-(float other) const;
-	vector2& operator-=(const vector2& other);
+	Vector2 operator+(const Vector2& other) const;
+	Vector2 operator+(float other) const;
+	Vector2& operator+=(const Vector2& other);
+	Vector2 operator-(const Vector2& other) const;
+	Vector2 operator-(float other) const;
+	Vector2& operator-=(const Vector2& other);
 
-	vector2 operator*(float scalar) const;
-	vector2& operator*=(float scalar);
-	vector2 operator/(float scalar) const;
-	vector2& operator/=(float scalar);
+	Vector2 operator*(float scalar) const;
+	Vector2& operator*=(float scalar);
+	Vector2 operator/(float scalar) const;
+	Vector2& operator/=(float scalar);
 
-	vector2& operator=(const vector2& other);
+	Vector2& operator=(const Vector2& other);
 
 	//STANDARD OPERATIONS
 	void zero();
-	vector2 invert() const;
+	Vector2 invert() const;
 	float magnitude() const;
 	float magnitude_sqr() const; //squared
 	void normalise(); //Normalise me
-	vector2 normalised() const; //Make a new me thats normalised
-	float distance(const vector2& other) const;
-	float distance_sqr(const vector2& other) const;
-	float dot(const vector2& other) const;
-	vector2 get_perpendicular_rh() const;
-	vector2 get_perpendicular_lh() const;
-	float angle_between(const vector2& other) const;
+	Vector2 normalised() const; //Make a new me thats normalised
+	float distance(const Vector2& other) const;
+	float distance_sqr(const Vector2& other) const;
+	float dot(const Vector2& other) const;
+	Vector2 get_perpendicular_rh() const;
+	Vector2 get_perpendicular_lh() const;
+	float angle_between(const Vector2& other) const;
 };
 #endif
 #pragma once

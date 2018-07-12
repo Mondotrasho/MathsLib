@@ -1,16 +1,16 @@
-#ifndef _VECTOR3_H_
-#define _VECTOR3_H_
+#ifndef _Vector3_H_
+#define _Vector3_H_
 
-class vector4 {
+class Vector4 {
 public:
 	//DEFUALT CONSTRUCTORS
-	vector4();
-	~vector4();
+	Vector4();
+	~Vector4();
 	//ALTERNATIVE  CONSTRUCTORS
 	//copy
-	vector4(const vector4& vector);
+	Vector4(const Vector4& Vector);
 	//defined
-	vector4(float xval, float yval, float zval, float wval);
+	Vector4(float xval, float yval, float zval, float wval);
 
 	//UNION
 	union {
@@ -30,31 +30,31 @@ public:
 	float operator[](int index) const; //getter
 	float& operator[](int index);      //setter
 
-	vector4 operator+(const vector4& other) const;
-	vector4 operator+(const float other) const;
-	vector4& operator+=(vector4& other);
-	vector4 operator-(const vector4& other) const;
-	vector4 operator-(const float other) const;
-	vector4& operator-=(vector4& other);
+	Vector4 operator+(const Vector4& other) const;
+	Vector4 operator+(const float other) const;
+	Vector4& operator+=(Vector4& other);
+	Vector4 operator-(const Vector4& other) const;
+	Vector4 operator-(const float other) const;
+	Vector4& operator-=(Vector4& other);
 
 
-	vector4 operator*(float scalar) const;
-	vector4& operator*=(float scalar);
-	vector4 operator/( float scalar) const;
-	vector4& operator/=(float scalar);
+	Vector4 operator*(float scalar) const;
+	Vector4& operator*=(float scalar);
+	Vector4 operator/( float scalar) const;
+	Vector4& operator/=(float scalar);
 
-	vector4& operator=(const vector4& other);
+	Vector4& operator=(const Vector4& other);
 
 	//STANDARD OPERATIONS
 	void zero();
-	vector4 invert() const;
+	Vector4 invert() const;
 	float magnitude() const;
 	float magnitude_sqr() const; //squared
 	void normalise(); //Normalise me
-	vector4 normalised() const; //Make a new me thats normalised
-	float distance(const vector4& other) const;
-	float distance_sqr(const vector4& other) const;
-	float dot(const vector4& other) const;
-	float angle_between(const vector4& other) const;
+	Vector4 normalised() const; //Make a new me thats normalised
+	float distance(const Vector4& other) const;
+	float distance_sqr(const Vector4& other) const;
+	float dot(const Vector4& other) const;
+	float angle_between(const Vector4& other) const;
 };
 #endif

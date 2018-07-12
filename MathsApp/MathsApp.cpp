@@ -23,11 +23,11 @@ void print(float pos)
 	std::cout << "o" << std::endl;
 }
 
-void printVec(const vector3& vector3)
+void printVec(const Vector3& Vector3)
 {
-	std::cout << " position : " << vector3.position << std::endl;
-	std::cout << " velocity : " << vector3.velocity << std::endl;
-	std::cout << " acceleration : " << vector3.acceleration << std::endl;
+	std::cout << " position : " << Vector3.position << std::endl;
+	std::cout << " velocity : " << Vector3.velocity << std::endl;
+	std::cout << " acceleration : " << Vector3.acceleration << std::endl;
 };
 
 //void printall();
@@ -48,7 +48,7 @@ int main()
 	auto current_time = Clock::now();
 	auto previous_time = Clock::now();
 
-	vector3 pos_vel_acc(  0 , 1 , 0.5 );
+	Vector3 pos_vel_acc(  0 , 1 , 0.5 );
 		while (true) {
 			
 			
@@ -70,7 +70,7 @@ int main()
 			//system("cls");
 			previous_time = current_time;
 
-			vector2 box{ 1 , 100 };
+			Vector2 box{ 1 , 100 };
 
 
 
