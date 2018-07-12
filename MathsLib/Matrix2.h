@@ -8,7 +8,7 @@ public:
 	Matrix2();
 	~Matrix2();
 	//copy
-	Matrix2(const Matrix2& Matrix);
+	Matrix2(const Matrix2& matrix);
 	//defined
 	Matrix2(const Vector2& new_x_ax, const Vector2& new_y_ax, const Vector2& new_z_ax);
 	Matrix2(float a, float b, float c, float d);

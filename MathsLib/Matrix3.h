@@ -50,6 +50,7 @@ public:
 	void set_scaled(const Vector3& v);
 	void scale(float x, float y, float z);
 	void scale(const Vector3& v);
+	void scale(const Matrix3& v);
 	void rotate_y(float radians);
 	void set_rotate_z(float radians);
 	void rotate_z(float radians);

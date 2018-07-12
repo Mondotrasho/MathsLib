@@ -135,6 +135,9 @@ Matrix3& Matrix3::operator-=(const Matrix3& m)
 	return *this;
 }
 
+
+
+
 void Matrix3::set_scaled(float x, float y, float z) {
 	// set scale of each axis
 	x_axis = { x, 0, 0 };
@@ -152,10 +155,20 @@ void Matrix3::scale(const float x, const float y, const float z) {
 	m.set_scaled(x, y, z);
 	*this = *this * m;
 }
-void Matrix3::scale(const Vector3& v) {
+void Matrix3::scale(const Vector3& v) { //creates scale matrix from vector input and scales
 	Matrix3 m;
-	m.set_scaled(v.x, v.y, v.z);
+	m.set_scaled(v.x, v.y, v.z); //sets up new scale matrix using our vector
 	*this = *this * m;
+}
+
+void Matrix3::scale(const Matrix3& m) { //takes scale matrix
+	Matrix3 newtemp;
+	// makes a new matrix with only the scale axis just to make sure you don't multiply anything else
+	newtemp.x_axis = { m.x_axis.x,0,0 };
+	newtemp.y_axis = { 0,m.y_axis.y,0 };
+	newtemp.z_axis = { 0,0,1};
+
+	*this = *this * newtemp;
 }
 
 

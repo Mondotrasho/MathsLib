@@ -135,15 +135,18 @@ void Matrix2::set_scaled(float x, float y) {
 	// set scale of each axis
 	x_axis = { x, 0};
 	y_axis = { 0, y};
-	}void Matrix2::set_scaled(const Vector2& v) {
+	}
+void Matrix2::set_scaled(const Vector2& v) {
 	// set scale of each axis
 	x_axis = { v.x, 0};
 	y_axis = { 0, v.y};
-}void Matrix2::scale(const float x, const float y) {
+}
+void Matrix2::scale(const float x, const float y) {
 	Matrix2 m;
 	m.set_scaled(x, y);
 	*this = *this * m;
-}void Matrix2::scale(const Vector2& v) {
+}
+void Matrix2::scale(const Vector2& v) {
 	Matrix2 m;
 	m.set_scaled(v.x, v.y);
 	*this = *this * m;
