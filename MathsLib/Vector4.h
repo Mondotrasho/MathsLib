@@ -16,7 +16,11 @@ public:
 	union {
 		//struct as xyz accessable with . operator
 		struct {
-			float x, y, z, w;
+			float x, y, z;
+			union {
+				float w;
+				float t;
+			};
 		};
 		//array accessable with [] operator
 		float data[4]; 

@@ -17,10 +17,12 @@ public:
 	union {
 		//struct as xyz accessable with . operator
 		struct {
-			float x, y, z;
-			//union {
-			//	float z, w;
-			//};
+			float x;
+			float y;
+			union {
+				float z;
+				float t;
+			};
 		};
 		struct {
 			float position, velocity, acceleration;

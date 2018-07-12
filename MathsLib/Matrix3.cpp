@@ -140,16 +140,19 @@ void matrix3::set_scaled(float x, float y, float z) {
 	x_axis = { x, 0, 0 };
 	y_axis = { 0, y, 0 };
 	z_axis = { 0, 0, z };
-}void matrix3::set_scaled(const vector3& v) {
+}
+void matrix3::set_scaled(const vector3& v) {
 	// set scale of each axis
 	x_axis = { v.x, 0, 0 };
 	y_axis = { 0, v.y, 0 };
 	z_axis = { 0, 0, v.z };
-}void matrix3::scale(const float x, const float y, const float z) {
+}
+void matrix3::scale(const float x, const float y, const float z) {
 	matrix3 m;
 	m.set_scaled(x, y, z);
 	*this = *this * m;
-}void matrix3::scale(const vector3& v) {
+}
+void matrix3::scale(const vector3& v) {
 	matrix3 m;
 	m.set_scaled(v.x, v.y, v.z);
 	*this = *this * m;

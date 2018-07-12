@@ -50,12 +50,12 @@ matrix4 matrix4::operator * (const matrix4& other) const {
 
 vector4 matrix4::operator * (const vector4& v) const {
 	vector4 result;
-	for (int r = 0; r < 4; ++r) {
+	for (auto r = 0; r < 4; ++r) {
 		result[r] =
 			data[0][r] * v[0] +
-			data[1][r] * v[1] +
-			data[2][r] * v[2] +
-			data[3][r] * v[3];
+			data[1][r] * v[1] + 
+			data[2][r] * v[2] + 
+			data[3][r] * v[3]; 
 	}
 	return result;
 }
