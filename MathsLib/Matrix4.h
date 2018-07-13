@@ -1,6 +1,7 @@
 #ifndef _Matrix4_H_
 #define _Matrix4_H_
 #include "Vector4.h"
+#include "Vector3.h"
 
 class Matrix4
 {
@@ -18,10 +19,8 @@ public:
 			Vector4 x_axis;
 			Vector4 y_axis;
 			Vector4 z_axis;
-			union {
-				Vector4 w_axis;
-				Vector4 t_axis;
-			};
+			Vector4 translation;
+		
 		};
 		Vector4 axis[4];
 		float data_alt[16];
@@ -32,7 +31,19 @@ public:
 	const Vector4& operator[](int index) const;
 	Matrix4 operator*(const Matrix4& other) const;
 	Vector4 operator*(const Vector4& v) const;
+	Matrix4& operator=(const Matrix4& other);
+
+
 	Matrix4 transposed() const;
+	void setScaled(float x, float y, float z);
+	void set_rotate_x(float radians);
+	void rotate_x(float radians);
+	void set_rotate_y(float radians);
+	void rotate_y(float radians);
+	void set_rotate_z(float radians);
+	void rotate_z(float radians);
+	void set_euler(float pitch, float yaw, float roll);
+	void translate(float x, float y, float z);
 };
 
 #endif

@@ -17,7 +17,7 @@ Matrix3::Matrix3(const Vector3& new_x_ax, const Vector3& new_y_ax, const Vector3
 {
 }
 
-Matrix3::Matrix3(const float a, const float b, const float c, const float d, const float e, const float f, const float g, const float h, const float i) : data{ {a,b,c},{d,e,f},{g,h,i} }
+Matrix3::Matrix3(const float a, const float b, const float c, const float d, const float e, const float f, const float g, const float h, const float i) : data { a, b, c,  d,e,f ,  g,h,i  }
 {
 }
 
@@ -39,10 +39,7 @@ Matrix3 Matrix3::operator * (const Matrix3& other) const {
 	Matrix3 result;
 	for (auto r = 0; r < 3; ++r) {
 		for (auto c = 0; c < 3; ++c) {
-			result.data[c][r] = 
-				data[0][r] * other.data[c][0] +
-				data[1][r] * other.data[c][1] +
-				data[2][r] * other.data[c][2];
+			result.data[c][r] = data[0][r] * other.data[c][0] + data[1][r] * other.data[c][1] + data[2][r] * other.data[c][2];
 		}
 	}
 	return result;
@@ -138,26 +135,26 @@ Matrix3& Matrix3::operator-=(const Matrix3& m)
 
 
 
-void Matrix3::set_scaled(float x, float y, float z) {
+void Matrix3::set_scaled(float x, float y) {
 	// set scale of each axis
 	x_axis = { x, 0, 0 };
 	y_axis = { 0, y, 0 };
-	z_axis = { 0, 0, z };
+	z_axis = { 0, 0, 1 };
 }
 void Matrix3::set_scaled(const Vector3& v) {
 	// set scale of each axis
 	x_axis = { v.x, 0, 0 };
 	y_axis = { 0, v.y, 0 };
-	z_axis = { 0, 0, v.z };
+	z_axis = { 0, 0, 1 };
 }
-void Matrix3::scale(const float x, const float y, const float z) {
+void Matrix3::scale(const float x, const float y) {
 	Matrix3 m;
-	m.set_scaled(x, y, z);
+	m.set_scaled(x, y);
 	*this = *this * m;
 }
 void Matrix3::scale(const Vector3& v) { //creates scale matrix from vector input and scales
 	Matrix3 m;
-	m.set_scaled(v.x, v.y, v.z); //sets up new scale matrix using our vector
+	m.set_scaled(v.x, v.y); //sets up new scale matrix using our vector
 	*this = *this * m;
 }
 
@@ -168,7 +165,7 @@ void Matrix3::scale(const Matrix3& m) { //takes scale matrix
 	newtemp.y_axis = { 0,m.y_axis.y,0 };
 	newtemp.z_axis = { 0,0,1};
 
-	*this = *this * newtemp;
+	*this = *this * newtemp; // Original x scale
 }
 
 
@@ -198,7 +195,7 @@ void Matrix3::set_rotate_z(const float radians) {
 	// leave X axis and elements unchanged
 	x_axis = { cosf(radians), -sinf(radians), 0 };
 	y_axis = { sinf(radians), cosf(radians),0  };
-	z_axis = { 0, 0,1  };
+	z_axis = { 0, 0,1 };
 }
 void Matrix3::rotate_z(const float radians) {
 	Matrix3 m;

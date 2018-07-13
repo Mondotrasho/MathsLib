@@ -46,7 +46,6 @@ Vector4& Vector4::operator -= (Vector4& other)  {
 }
 
 
-
 //MULTIPLICATION
 Vector4 Vector4::operator * (float scalar) const {
 	return{ x * scalar, y * scalar, z * scalar,w * scalar };
@@ -69,6 +68,7 @@ Vector4& Vector4::operator = (const Vector4& other) {
 	x = other.x; y = other.y; z = other.z,w = other.w;
 	return *this;
 }
+
 
 void Vector4::zero()
 {
@@ -124,4 +124,12 @@ float Vector4::angle_between(const Vector4& other) const {
 	float d = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
 	// return the angle between them
 	return acos(d);
+}
+
+Vector4 Vector4::cross(const Vector4& other) const {
+	// the result is a Vector, so we'll set W to 0
+	return{ y * other.z - z * other.y,
+		z * other.x - x * other.z,
+		x * other.y - y * other.x,
+		0 };
 }

@@ -21,7 +21,7 @@ public:
 			float y;
 			union {
 				float z;
-				float t;
+				float w;
 			};
 		};
 		struct {

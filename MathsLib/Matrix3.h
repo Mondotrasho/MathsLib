@@ -12,6 +12,8 @@ public:
 	//defined
 	Matrix3(const Vector3& new_x_ax, const Vector3& new_y_ax, const Vector3& new_z_ax);
 	Matrix3(const float a, const float b, const float c, const float d, const float e, const float f, const float g, const float h,const float i);
+	void setRotateX(float radians);
+
 	union {
 		struct {
 			Vector3 x_axis;
@@ -19,7 +21,7 @@ public:
 			//Vector3 z_axis;	
 			union {
 				Vector3 z_axis;
-				Vector3 t_axis;
+				Vector3 translation;
 			};
 
 		};
@@ -46,9 +48,9 @@ public:
 	Vector3 get_row(int r);
 	Matrix3& operator+=(const Matrix3& m);
 	Matrix3& operator-=(const Matrix3& m);
-	void set_scaled(float x, float y, float z);
+	void set_scaled(float x, float y);
 	void set_scaled(const Vector3& v);
-	void scale(float x, float y, float z);
+	void scale(float x, float y);
 	void scale(const Vector3& v);
 	void scale(const Matrix3& v);
 	void rotate_y(float radians);

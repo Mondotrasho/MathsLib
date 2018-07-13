@@ -1,5 +1,8 @@
-#ifndef _Vector3_H_
-#define _Vector3_H_
+#ifndef _Vector4_H_
+#define _Vector4_H_
+
+
+
 
 class Vector4 {
 public:
@@ -38,6 +41,7 @@ public:
 	Vector4& operator-=(Vector4& other);
 
 
+
 	Vector4 operator*(float scalar) const;
 	Vector4& operator*=(float scalar);
 	Vector4 operator/( float scalar) const;
@@ -56,5 +60,6 @@ public:
 	float distance_sqr(const Vector4& other) const;
 	float dot(const Vector4& other) const;
 	float angle_between(const Vector4& other) const;
+	Vector4 cross(const Vector4& other) const;
 };
 #endif

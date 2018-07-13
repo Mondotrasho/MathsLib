@@ -1,4 +1,5 @@
 #include "Matrix4.h"
+#include <math.h>
 
 Matrix4::Matrix4(): data{ { 0,0,0,0 },{ 0,0,0,0 },{ 0,0,0,0 },{ 0,0,0,0 } }
 {
@@ -7,12 +8,12 @@ Matrix4::Matrix4(): data{ { 0,0,0,0 },{ 0,0,0,0 },{ 0,0,0,0 },{ 0,0,0,0 } }
 Matrix4::~Matrix4()
 = default;
 
-Matrix4::Matrix4(const Matrix4& Matrix) : x_axis(Matrix.x_axis), y_axis(Matrix.y_axis), z_axis(Matrix.z_axis), w_axis(Matrix.w_axis)
+Matrix4::Matrix4(const Matrix4& Matrix) : x_axis(Matrix.x_axis), y_axis(Matrix.y_axis), z_axis(Matrix.z_axis), translation(Matrix.translation)
 {
 }
 
 
-Matrix4::Matrix4(const Vector4& new_x_ax, const Vector4& new_y_ax, const Vector4& new_z_ax, const Vector4& new_w_ax) : x_axis(new_x_ax), y_axis(new_y_ax), z_axis(new_z_ax), w_axis(new_w_ax)
+Matrix4::Matrix4(const Vector4& new_x_ax, const Vector4& new_y_ax, const Vector4& new_z_ax, const Vector4& new_w_ax) : x_axis(new_x_ax), y_axis(new_y_ax), z_axis(new_z_ax), translation(new_w_ax)
 {
 }
 
@@ -60,6 +61,16 @@ Vector4 Matrix4::operator * (const Vector4& v) const {
 	return result;
 }
 
+Matrix4& Matrix4::operator=(const Matrix4& other)
+{
+	x_axis = other.x_axis;
+	y_axis = other.y_axis;
+	z_axis = other.z_axis;
+	translation = other.translation;
+	return *this;
+
+}
+
 Matrix4 Matrix4::transposed() const {
 	Matrix4 result;
 	// flip row and column
@@ -67,4 +78,65 @@ Matrix4 Matrix4::transposed() const {
 		for (int c = 0; c < 4; ++c)
 			result.data[r][c] = data[c][r];
 	return result;
+}
+
+void Matrix4::setScaled(float x, float y, float z) {
+	// set scale of each axis
+	x_axis = { x, 0, 0, 0 };
+	y_axis = { 0, y, 0, 0 };
+	z_axis = { 0, 0, z, 0 };
+	translation = { 0, 0, 0, 1 };
+}
+void Matrix4::set_rotate_x(float radians) { //WHY IS THIS HERE
+	// leave X axis and elements unchanged
+	x_axis = { 1, 0, 0, 0 };
+	y_axis = { 0, cosf(radians), sinf(radians), 0 };
+	z_axis = { 0, -sinf(radians), cosf(radians), 0 };
+	translation = { 0, 0, 0, 1 };
+}
+
+void Matrix4::rotate_x(const float radians) {
+	Matrix4 m;
+	m.set_rotate_x(radians);
+	*this = *this * m;
+}
+void Matrix4::set_rotate_y(const float radians) {
+	// leave X axis and elements unchanged
+	x_axis = { cosf(radians), 0,-sinf(radians),0 };
+	y_axis = { 0, 1, 0,0 };
+	z_axis = { sinf(radians),0 , cosf(radians),0 };
+	translation = { 0, 0, 0, 1 };
+}
+void Matrix4::rotate_y(const float radians) {
+	Matrix4 m;
+	m.set_rotate_y(radians);
+	*this = *this * m;
+}
+void Matrix4::set_rotate_z(const float radians) {
+	// leave X axis and elements unchanged
+	x_axis = { cosf(radians), -sinf(radians), 0,0 };
+	y_axis = { sinf(radians), cosf(radians),0,0 };
+	z_axis = { 0, 0,1,0 };
+	translation = { 0, 0, 0, 1 };
+}
+void Matrix4::rotate_z(const float radians) {
+	Matrix4 m;
+	m.set_rotate_z(radians);
+	*this = *this * m;
+}
+
+
+void Matrix4::set_euler(const float pitch, const float yaw, const float roll) {
+	Matrix4 x, y, z;
+	x.set_rotate_x(pitch);
+	y.set_rotate_y(yaw);
+	z.set_rotate_z(roll);
+
+	// combine rotations in a specific order
+	*this = z * y * x;
+}
+
+void Matrix4::translate(float x, float y, float z) {
+	// apply vector offset
+	translation += Vector4(x, y, z, 0);
 }

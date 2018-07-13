@@ -5,6 +5,8 @@
 #include <thread>
 #include "Vector3.h"
 #include "Vector2.h"
+#include "Matrix3.h"
+#include "Matrix4.h"
 
 typedef std::chrono::high_resolution_clock Clock;
 
@@ -30,11 +32,7 @@ void printVec(const Vector3& Vector3)
 	std::cout << " acceleration : " << Vector3.acceleration << std::endl;
 };
 
-//void printall();
-
-int main()
-{
-/*
+void printall(){/*
 		𝒗 = 𝒖 + 𝒂𝒕
 		Find the new velocity using current velocity, acceleration and time
 
@@ -48,37 +46,76 @@ int main()
 	auto current_time = Clock::now();
 	auto previous_time = Clock::now();
 
-	Vector3 pos_vel_acc(  0 , 1 , 0.5 );
-		while (true) {
-			
-			
-			current_time = Clock::now();
-			const auto deltatime = duration_cast<nanoseconds>(current_time - previous_time).count();
-			std::cout << " Delta : " << duration_cast<nanoseconds>(current_time - previous_time).count() << " seconds" << std::endl;
-			//update
-			pos_vel_acc.velocity += pos_vel_acc.acceleration * deltatime;
-			
-			
-			pos_vel_acc.position += pos_vel_acc.velocity * deltatime;
-			
-			//draw
-
-			
-			printVec(pos_vel_acc);
-			print(pos_vel_acc.position);
-			//printall();
-			//system("cls");
-			previous_time = current_time;
-
-			Vector2 box{ 1 , 100 };
+	Vector3 pos_vel_acc(0, 1, 0.5);
+	while (true) {
 
 
+		current_time = Clock::now();
+		const auto deltatime = duration_cast<nanoseconds>(current_time - previous_time).count();
+		std::cout << " Delta : " << duration_cast<nanoseconds>(current_time - previous_time).count() << " seconds" << std::endl;
+		//update
+		pos_vel_acc.velocity += pos_vel_acc.acceleration * deltatime;
 
 
-		}
+		pos_vel_acc.position += pos_vel_acc.velocity * deltatime;
+
+		//draw
+
+
+		printVec(pos_vel_acc);
+		print(pos_vel_acc.position);
+		//printall();
+		//system("cls");
+		previous_time = current_time;
+
+		Vector2 box{ 1 , 100 };
+
+
+
+
+	}
+};
+
+int main()
+{
+	//printall();
+	Matrix3 Location1 = { .7f,-.7f,0,   0,1,0,   1,1,1 }; 
+	Matrix3 Location2 = { 2,0,0,   0,2,0,   0,0,1 }; //scale by 2
+
+	Matrix3 Location3 = Location1 * Location2;
+	Matrix4 myMatrix;
+
+	myMatrix.translation = Vector4(9, 9, 9, 1);
+	// if we have implemented a Vector4 = Vector3 operator
+	myMatrix.translation = Vector3(9, 9, 9);
+
+	//for (int i = 0; i < 3; ++i)
+	//{
+	//	for (int j = 0;j < 3; ++j)
+	//	{
+	//		std::cout << Location1.data[i][j];
+	//		std::cout << "_";
+	//	}
+	//	if (i == 0) { std::cout << std::endl; }
+	//	if (i == 1) { std::cout << std::endl; }
+	//	if (i == 2) { std::cout << std::endl; }
+	//
+	//}
+	//std::cout << "______" << std::endl;
+	//std::cout << "______" << std::endl;
+	//std::cout << "______" << std::endl;
+
+	//Location1.scale(1, 2);
+
+	//for (int i = 0; i < 9; ++i)
+	//{
+	//	std::cout << Location1.data_alt[i];
+	//	if (i == 2) { std::cout << std::endl; }
+	//	if (i == 5) { std::cout << std::endl; }
+	//	if (i == 8) { std::cout << std::endl; }
+	//	std::cout << "_" ;
+	//}
 	
-	
-
 
 /*
 	set currentTime to current system time
