@@ -217,4 +217,8 @@ void Matrix3::translate(float x, float y)
 {
 	z_axis.x += x;
 	z_axis.y += y;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fbfcefce3a997f0eafe029811067720867ae9506
