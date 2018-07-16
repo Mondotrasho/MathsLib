@@ -87,7 +87,8 @@ void Matrix4::setScaled(float x, float y, float z) {
 	z_axis = { 0, 0, z, 0 };
 	translation = { 0, 0, 0, 1 };
 }
-void Matrix4::set_rotate_x(float radians) { //WHY IS THIS HERE
+
+void Matrix4::set_rotate_x(float radians) { //WHY IS THIS HERE
 	// leave X axis and elements unchanged
 	x_axis = { 1, 0, 0, 0 };
 	y_axis = { 0, cosf(radians), sinf(radians), 0 };
