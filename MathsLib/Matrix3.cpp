@@ -212,3 +212,9 @@ void Matrix3::set_euler(const float pitch, const float yaw, const float roll) {
 	// combine rotations in a specific order
 	*this = z * y * x;
 }
+
+void Matrix3::translate(float x, float y)
+{
+	z_axis.x += x;
+	z_axis.y += y;
+}
