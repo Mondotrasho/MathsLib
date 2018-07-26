@@ -87,10 +87,11 @@ float Vector4::magnitude() const { return sqrt(x*x + y*y + z*z + w*w); }
 float Vector4::magnitude_sqr() const { return (x*x + y*y + z*z + w*w); }
 
 void Vector4::normalise() {
-	x /= magnitude();
-	y /= magnitude();
-	z /= magnitude();
-	w /= magnitude();
+	float magtemp = magnitude();
+	x /= magtemp;
+	y /= magtemp;
+	z /= magtemp; 
+	w /= magtemp;
 }
 Vector4 Vector4::normalised() const
 {

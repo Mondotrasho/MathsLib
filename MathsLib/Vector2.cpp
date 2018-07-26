@@ -76,8 +76,10 @@ float Vector2::magnitude() const { return sqrt(x*x + y*y); }
 float Vector2::magnitude_sqr() const { return (x*x + y*y); }
 
 void Vector2::normalise() {
-	x /= magnitude();
-	y /= magnitude();
+	float magtemp = magnitude();
+
+	x /= magtemp;
+	y /= magtemp;
 }
 Vector2 Vector2::normalised() const
 {
