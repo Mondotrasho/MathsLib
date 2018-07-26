@@ -1,19 +1,24 @@
-#pragma once
+#ifndef _UTILITIES_H
+#define _UTILITIES_H
 #include "Vector2.h"
 
 // utilities
-float min(float a, float b) { return a < b ? a : b; }
-float max(float a, float b) { return a > b ? a : b; }
-Vector2 min(const Vector2& a, const Vector2& b) {
-	return{ min(a.x,b.x), min(a.y, b.y) };
-}
-Vector2 max(const Vector2& a, const Vector2& b) {
-	return{ max(a.x,b.x), max(a.y, b.y) };
+inline float Umin(float a, float b) { return a < b ? a : b; }
+inline float Umax(float a, float b) { return a > b ? a : b; }
+
+inline Vector2 Umin(const Vector2& a, const Vector2& b) {
+	return{ Umin(a.x,b.x), Umin(a.y, b.y) };
 }
 
-float clamp(float t, float a, float b) {
-	return max(a, min(b, t));
+inline Vector2 Umax(const Vector2& a, const Vector2& b) {
+	return{ Umax(a.x,b.x), Umax(a.y, b.y) };
 }
-Vector2 clamp(const Vector2& t, const Vector2& a, const Vector2& b) {
-	return max(a, min(b, t));
+
+inline float Uclamp(float t, float a, float b) {
+	return Umax(a, Umin(b, t));
 }
+
+inline Vector2 Uclamp(const Vector2& t, const Vector2& a, const Vector2& b) {
+	return Umax(a,Umin(b, t));
+}
+#endif

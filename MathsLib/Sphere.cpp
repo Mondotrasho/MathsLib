@@ -1,11 +1,4 @@
-
-
 #include "Sphere.h"
-#include "Vector2.h"
-#include <cfloat>
-#include "Utilities.h"
-#include <vector>
-#include "AABB.h"
 
 void Sphere::fit(const Vector2* points, unsigned int count) {
 	// invalidate extents
@@ -13,8 +6,8 @@ void Sphere::fit(const Vector2* points, unsigned int count) {
 	Vector2 max = { FLT_MIN, FLT_MIN };
 	// find min and max of the points
 	for (unsigned int i = 0; i < count; ++i, ++points) {
-		min = ::min(min, *points);
-		max = ::max(max, *points);
+		min = Umin(min, *points);
+		max = Umax(max, *points);
 	}
 	// put a circle around the min/max box
 	center = (min + max) * 0.5f;
@@ -26,8 +19,8 @@ void Sphere::fit(const std::vector<Vector2>& points) {
 	Vector2 max = { FLT_MIN, FLT_MIN };
 	// find min and max of the points
 	for (auto& p : points) {
-		min = ::min(min, p);
-		max = ::max(max, p);
+		min = Umin(min, p);
+		max = Umax(max, p);
 	}
 	// put a circle around the min/max box
 	center = (min + max) * 0.5f;

@@ -23,8 +23,8 @@ void AABB::fit(const Vector2* points, unsigned int count) {
 	for (unsigned int i = 0;
 		i < count;
 		++i, ++points) {
-		min = ::min(min, *points);
-		max = ::max(max, *points);
+		min = Umin(min, *points);
+		max = Umax(max, *points);
 	}
 }
 void AABB::fit(const std::vector<Vector2>& points) {
@@ -33,8 +33,8 @@ void AABB::fit(const std::vector<Vector2>& points) {
 	max = { FLT_MIN, FLT_MIN };
 	// find min and max of the points
 	for (auto& p : points) {
-		min = ::min(min, p);
-		max = ::max(max, p);
+		min = Umin(min, p);
+		max = Umax(max, p);
 	}
 }
 bool AABB::overlaps(const Vector2& p) const {
@@ -48,6 +48,6 @@ bool AABB::overlaps(const AABB& other) const {
 		min.x > other.max.x || min.y > other.max.y);
 }
 Vector2 AABB::closestPoint(const Vector2& p) const {
-	return clamp(p, min, max);
+	return Uclamp(p, min, max);
 }
 

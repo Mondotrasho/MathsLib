@@ -1,4 +1,6 @@
 // simple axis-aligned bounding box that stores min/max
+#ifndef _AABB_H_
+#define _AABB_H_
 #include "Vector2.h"
 #include <vector>
 #include "Utilities.h"
@@ -20,3 +22,4 @@ public:
 	Vector2 min, max;
 	
 };
+#endif

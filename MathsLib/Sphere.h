@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _SPHERE_H_
+#define _SPHERE_H_
 #include "Vector2.h"
 #include <vector>
 #include "AABB.h"
@@ -20,3 +21,5 @@ public:
 	float radius;
 	// more to come...
 };
+
+#endif

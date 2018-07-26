@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _RAY_H_
+#define _RAY_H_
 #include "Vector2.h"
 #include <cmath>
 #include "Sphere.h"
@@ -23,4 +24,4 @@ public:
 	float length;
 	
 };
-
+#endif

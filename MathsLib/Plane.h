@@ -1,6 +1,7 @@
-#pragma once
+#ifndef _PLANE_H_
+#define _PLANE_H_
+
 #include "Vector2.h"
-#include "Vector3.h"
 #include "Sphere.h"
 
 enum ePlaneResult : int {
@@ -34,5 +35,5 @@ public:
 
 	Vector2 N;
 	float d;
-	// more to go here...
-};
+};
+#endif

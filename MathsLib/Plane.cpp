@@ -1,6 +1,4 @@
 #include "Plane.h"
-#include "Sphere.h"
-#include "AABB.h"
 
 float Plane::distanceTo(const Vector2& p) const {
 	return p.dot(N) + d;

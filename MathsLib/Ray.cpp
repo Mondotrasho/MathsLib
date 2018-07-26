@@ -1,14 +1,12 @@
 #include "Ray.h"
-#include "Utilities.h"
-#include "Sphere.h"
-#include "Plane.h"
+
 
 
 Vector2 Ray::closestPoint(const Vector2& point) const {
 	// ray origin to arbitrary point
 	auto p = point - origin;
 	// project the point onto the ray and clamp by length
-	float t = clamp(p.dot(direction), 0, length);
+	float t = Uclamp(p.dot(direction), 0, length);
 	// return position in direction of ray
 	return origin + direction * t;
 }
@@ -86,7 +84,7 @@ bool Ray::intersects(const AABB& aabb, Vector2* I) const
 	if (xmin > ymax || ymin > xmax)
 		return false;
 	// the first contact is the largest of the two min
-	float t = max(xmin, ymin);
+	float t = Umax(xmin, ymin);
 	// intersects if within range
 	if (t >= 0 && t <= length) {
 		// store intersection point if requested

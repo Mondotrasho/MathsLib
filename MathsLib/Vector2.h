@@ -58,4 +58,3 @@ public:
 	float angle_between(const Vector2& other) const;
 };
 #endif
-#pragma once
