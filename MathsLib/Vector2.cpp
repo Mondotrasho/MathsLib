@@ -16,6 +16,18 @@ Vector2::Vector2(float xval, float yval): x(xval), y(yval)
 {
 }
 
+Vector2& Vector2::operator+=(const float& other)//suss
+{
+	x += other; y += other;
+	return *this;
+}
+
+Vector2& Vector2::operator-=(const float& other)//suss
+{
+	x -= other; y -= other;
+	return *this;
+}
+
 float Vector2::operator [] (int index) const { return data[index]; }
 float& Vector2::operator [] (int index) { return data[index]; }
 //ADDITION

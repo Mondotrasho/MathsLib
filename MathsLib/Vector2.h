@@ -11,6 +11,8 @@ public:
 	Vector2(const Vector2& Vector);
 	//defined
 	Vector2(float xval, float yval);
+	Vector2& operator+=(const float& other);
+	Vector2& operator-=(const float& other);
 
 	//UNION
 	union {
