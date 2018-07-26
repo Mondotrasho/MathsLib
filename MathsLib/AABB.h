@@ -18,4 +18,5 @@ public:
 	bool overlaps(const AABB& other) const;
 	Vector2 closestPoint(const Vector2& p) const;
 	Vector2 min, max;
-	};
+	
+};
