@@ -131,18 +131,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\MathsApp\Utility.h" />
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="Matrix2.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\MathsApp\Utility.cpp" />
+    <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Matrix2.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
