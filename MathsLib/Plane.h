@@ -24,16 +24,7 @@ public:
 		// calculate d
 		d = -p1.dot(N);
 	}
-	Plane(const Vector3& p1,
-		const Vector3& p2, const Vector3& p3) {
-		// calculate edge vectors
-		auto v1 = (p2 - p1).normalised();
-		auto v2 = (p3 - p1).normalised();
-		// calculate normal
-		N = v1.cross(v2);
-		// calculate d
-		d = -p1.dot(N);
-	}
+
 
 	float distanceTo(const Vector2& p) const;
 	Vector2 closestPoint(const Vector2& p) const;
