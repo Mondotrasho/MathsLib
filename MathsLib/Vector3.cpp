@@ -90,7 +90,8 @@ void Vector3::normalise() {
 }
 Vector3 Vector3::normalised() const
 {
-	return{ x / magnitude(), y / magnitude(), z / magnitude() };
+	float magtemp = magnitude();
+	return{ x / magtemp, y / magtemp, z / magtemp };
 }
 
 float Vector3::distance(const Vector3& other) const {

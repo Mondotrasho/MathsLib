@@ -8,13 +8,14 @@ enum ePlaneResult : int {
 	FRONT = 1,
 	BACK = -1,
 	INTERSECTS = 0
-};
+};
+
 // 2D mathematical plane using Ax + By + d = 0
 class Plane {
 public:
 	Plane() {}
-	Plane(float x, float y, float d) : N(x, y), d(d) {}
-	Plane(const Vector2& n, float d) : N(n), d(d) {}
+	Plane(float x, float y, float d) : N(Vector2(x, y).normalised()), d(d) {} //VV
+	Plane(const Vector2& n, float d) : N(n.normalised()), d(d) {}
 	Plane(const Vector2& p1, const Vector2& p2) {
 		// calculate normalised vector from p0 to p1
 		auto v = p2 - p1;

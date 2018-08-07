@@ -10,8 +10,7 @@ Vector2 Ray::closestPoint(const Vector2& point) const {
 	// return position in direction of ray
 	return origin + direction * t;
 }
-bool Ray::intersects(const Sphere& sphere,
-	Vector2* I = nullptr) const {
+bool Ray::intersects(const Sphere& sphere,Vector2* I = nullptr)  {
 	// ray origin to sphere center
 	auto L = sphere.center - origin;
 	// project sphere center onto ray
