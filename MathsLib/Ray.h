@@ -16,9 +16,9 @@ public:
 		: origin(start), direction(dir), length(l) {}
 
 	Vector2 closestPoint(const Vector2& point) const;
-	bool intersects(const Sphere& sphere, Vector2* I) const;
-	bool intersects(const Plane& plane, Vector2* I) const;
-	bool intersects(const AABB& aabb, Vector2* I = nullptr) const;
+	bool intersects(const Sphere& sphere, Vector2* I, Vector2* R) const;
+	bool intersects(const Plane& plane, Vector2* I, Vector2* R) const;
+	bool intersects(const AABB& aabb, Vector2* I, Vector2* R) const;
 	Vector2 origin;
 	Vector2 direction;
 	float length;

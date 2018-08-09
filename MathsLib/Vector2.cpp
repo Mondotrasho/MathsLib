@@ -95,7 +95,8 @@ void Vector2::normalise() {
 }
 Vector2 Vector2::normalised() const
 {
-	return{ x / magnitude(), y / magnitude()};
+	float magtemp = magnitude();
+	return{ x / magtemp, y / magtemp };
 }
 
 float Vector2::distance(const Vector2& other) const {

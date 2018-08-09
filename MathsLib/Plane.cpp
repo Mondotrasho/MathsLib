@@ -21,7 +21,8 @@ ePlaneResult Plane::testSide(const Sphere& sphere) const {
 	else if (t < -sphere.radius)
 		return ePlaneResult::BACK;
 	return ePlaneResult::INTERSECTS;
-}ePlaneResult Plane::testSide(const AABB& aabb) const {
+}
+ePlaneResult Plane::testSide(const AABB& aabb) const {
 	// tag if we find a corner on each side
 	bool side[2] = { false, false };
 	// compare each corner

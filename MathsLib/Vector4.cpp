@@ -95,7 +95,8 @@ void Vector4::normalise() {
 }
 Vector4 Vector4::normalised() const
 {
-	return{ x / magnitude(), y / magnitude(), z / magnitude(), w / magnitude() };
+	float magtemp = magnitude();
+	return{ x / magtemp, y / magtemp, z / magtemp, w / magtemp };
 }
 
 float Vector4::distance(const Vector4& other) const {
