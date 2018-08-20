@@ -10,10 +10,7 @@ class Ray {
 public:
 	Ray() {}
 	// default infinite length
-	Ray(const Vector2& start,
-		const Vector2& dir,
-		float l = INFINITY)
-		: origin(start), direction(dir), length(l) {}
+	Ray(const Vector2& start,const Vector2& dir,float l = INFINITY)	: origin(start), direction(dir), length(l) {}
 
 	Vector2 closestPoint(const Vector2& point) const;
 	bool intersects(const Sphere& sphere, Vector2* I, Vector2* R) const;
