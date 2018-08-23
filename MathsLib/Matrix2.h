@@ -1,6 +1,7 @@
 #ifndef _Matrix2_H_
 #define _Matrix2_H_
 #include "Vector2.h"
+#include <array>
 
 class Matrix2
 {
@@ -21,6 +22,7 @@ public:
 		};
 		Vector2 axis[2];
 		float data[2][2];
+		float data_alt[4];
 	};
 
 	Vector2& operator[](int index);
@@ -43,6 +45,8 @@ public:
 	void scale(const Vector2& v);
 	void setRotate(float radians);
 	void rotate(float radians);
+
+	operator float*() { return data_alt; }
 };
 
 #endif
