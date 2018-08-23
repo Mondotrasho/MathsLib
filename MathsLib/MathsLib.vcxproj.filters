@@ -57,6 +57,9 @@
     <ClInclude Include="nicolausYes_easing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Curve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\MathsApp\Utility.cpp">

@@ -127,3 +127,8 @@ float Vector2::angle_between(const Vector2& other) const {
 	// return the angle between them
 	return acos(d);
 }
+
+Vector2& operator*(const float lhs, const Vector2& rhs)
+{
+	return Vector2{ lhs * rhs.x, lhs * rhs.y };
+}

@@ -62,4 +62,6 @@ public:
 	float angle_between(const Vector4& other) const;
 	Vector4 cross(const Vector4& other) const;
 };
+
+Vector4& operator*(const float& lhs, const Vector4& rhs);
 #endif

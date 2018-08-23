@@ -59,4 +59,6 @@ public:
 	Vector2 get_perpendicular_lh() const;
 	float angle_between(const Vector2& other) const;
 };
+
+Vector2& operator*(const float& lhs, const Vector2& rhs);
 #endif

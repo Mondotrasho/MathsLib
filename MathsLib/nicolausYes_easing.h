@@ -34,7 +34,7 @@ enum easing_functions
 	EaseInOutBounce
 };
 
-typedef double(*easingFunction)(double);
+typedef float(*easingFunction)(float);
 
 easingFunction getEasingFunction( easing_functions function );
 

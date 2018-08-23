@@ -128,4 +128,10 @@ float Vector3::angle_between(const Vector3& other) const {
 	return acos(d);
 }
 
+
+Vector3& operator*(const float& lhs, const Vector3& rhs)
+{
+	return Vector3{ lhs * rhs.x, lhs * rhs.y,lhs * rhs.z };
+}
+
 //ADD GET PERPINDICULAR
