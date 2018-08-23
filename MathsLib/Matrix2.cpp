@@ -153,13 +153,13 @@ void Matrix2::scale(const Vector2& v) {
 }
 
 
-void Matrix2::set_rotate(const float radians) {
+void Matrix2::setRotate(const float radians) {
 	// leave X axis and elements unchanged
 	x_axis = { cosf(radians), -sinf(radians),};
 	y_axis = { sinf(radians), cosf(radians)};
 }
 void Matrix2::rotate(const float radians) {
 	Matrix2 m;
-	m.set_rotate(radians);
+	m.setRotate(radians);
 	*this = *this * m;
 }

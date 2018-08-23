@@ -169,7 +169,7 @@ void Matrix3::scale(const Matrix3& m) { //takes scale matrix
 }
 
 
-void Matrix3::set_rotate_x(const float radians) {
+void Matrix3::setRotateX(const float radians) {
 	// leave X axis and elements unchanged
 	x_axis = { 1, 0, 0 };
 	y_axis = { 0, cosf(radians), sinf(radians) };
@@ -177,10 +177,10 @@ void Matrix3::set_rotate_x(const float radians) {
 }
 void Matrix3::rotate_x(const float radians) {
 	Matrix3 m;
-	m.set_rotate_x(radians);
+	m.setRotateX(radians);
 	*this = *this * m;
 }
-void Matrix3::set_rotate_y(const float radians) {
+void Matrix3::setRotateY(const float radians) {
 	// leave X axis and elements unchanged
 	x_axis = { cosf(radians), 0,-sinf(radians) };
 	y_axis = { 0, 1, 0 };
@@ -188,10 +188,10 @@ void Matrix3::set_rotate_y(const float radians) {
 }
 void Matrix3::rotate_y(const float radians) {
 	Matrix3 m;
-	m.set_rotate_y(radians);
+	m.setRotateY(radians);
 	*this = *this * m;
 }
-void Matrix3::set_rotate_z(const float radians) {
+void Matrix3::setRotateZ(const float radians) {
 	// leave X axis and elements unchanged
 	x_axis = { cosf(radians), -sinf(radians), 0 };
 	y_axis = { sinf(radians), cosf(radians),0  };
@@ -199,16 +199,16 @@ void Matrix3::set_rotate_z(const float radians) {
 }
 void Matrix3::rotate_z(const float radians) {
 	Matrix3 m;
-	m.set_rotate_z(radians);
+	m.setRotateZ(radians);
 	*this = *this * m;
 }
 
 
 void Matrix3::set_euler(const float pitch, const float yaw, const float roll) {
 	Matrix3 x, y, z;
-	x.set_rotate_x(pitch);
-	y.set_rotate_y(yaw);
-	z.set_rotate_z(roll);
+	x.setRotateX(pitch);
+	y.setRotateY(yaw);
+	z.setRotateZ(roll);
 	// combine rotations in a specific order
 	*this = z * y * x;
 }
