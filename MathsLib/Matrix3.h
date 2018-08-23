@@ -61,6 +61,8 @@ public:
 	void set_rotate_y(float radians);
 	void set_euler(float pitch, float yaw, float roll);
 	void translate(float x, float y);
+
+	operator float*() { return data_alt; }
 };
 
 #endif

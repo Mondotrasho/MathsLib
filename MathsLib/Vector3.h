@@ -64,6 +64,8 @@ public:
 	float dot(const Vector3& other) const;
 	Vector3 cross(const Vector3& other) const;
 	float angle_between(const Vector3& other) const;
+
+	operator float*() { return data; }
 };
 
 Vector3& operator*(const float& lhs, const Vector3& rhs);

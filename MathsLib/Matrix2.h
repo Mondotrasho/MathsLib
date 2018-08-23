@@ -21,6 +21,7 @@ public:
 		};
 		Vector2 axis[2];
 		float data[2][2];
+		float data_alt[4];
 	};
 
 	Vector2& operator[](int index);
@@ -43,6 +44,8 @@ public:
 	void scale(const Vector2& v);
 	void set_rotate(float radians);
 	void rotate(float radians);
+
+	operator float*() { return data_alt; }
 };
 
 #endif

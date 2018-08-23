@@ -44,6 +44,8 @@ public:
 	void rotate_z(float radians);
 	void set_euler(float pitch, float yaw, float roll);
 	void translate(float x, float y, float z);
+
+	operator float*() { return data_alt; }
 };
 
 #endif
