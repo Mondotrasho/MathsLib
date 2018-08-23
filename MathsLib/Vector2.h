@@ -45,6 +45,7 @@ public:
 
 	Vector2& operator=(const Vector2& other);
 
+	
 	//STANDARD OPERATIONS
 	void zero();
 	Vector2 invert() const;

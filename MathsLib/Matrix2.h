@@ -41,7 +41,7 @@ public:
 	void set_scaled(const Vector2& v);
 	void scale(float x, float y);
 	void scale(const Vector2& v);
-	void set_rotate(float radians);
+	void setRotate(float radians);
 	void rotate(float radians);
 };
 

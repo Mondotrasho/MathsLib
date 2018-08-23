@@ -12,7 +12,6 @@ public:
 	//defined
 	Matrix3(const Vector3& new_x_ax, const Vector3& new_y_ax, const Vector3& new_z_ax);
 	Matrix3(const float a, const float b, const float c, const float d, const float e, const float f, const float g, const float h,const float i);
-	void setRotateX(float radians);
 
 	union {
 		struct {
@@ -54,11 +53,11 @@ public:
 	void scale(const Vector3& v);
 	void scale(const Matrix3& v);
 	void rotate_y(float radians);
-	void set_rotate_z(float radians);
+	void setRotateZ(float radians);
 	void rotate_z(float radians);
-	void set_rotate_x(float radians);
+	void setRotateX(float radians);
 	void rotate_x(float radians);
-	void set_rotate_y(float radians);
+	void setRotateY(float radians);
 	void set_euler(float pitch, float yaw, float roll);
 	void translate(float x, float y);
 };

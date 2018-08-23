@@ -36,11 +36,11 @@ public:
 
 	Matrix4 transposed() const;
 	void setScaled(float x, float y, float z);
-	void set_rotate_x(float radians);
+	void setRotateX(float radians);
 	void rotate_x(float radians);
-	void set_rotate_y(float radians);
+	void setRotateY(float radians);
 	void rotate_y(float radians);
-	void set_rotate_z(float radians);
+	void setRotateZ(float radians);
 	void rotate_z(float radians);
 	void set_euler(float pitch, float yaw, float roll);
 	void translate(float x, float y, float z);
