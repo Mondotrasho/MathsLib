@@ -62,4 +62,6 @@ public:
 
 	operator float*() { return data; }
 };
+
+Vector2& operator*(const float& lhs, const Vector2& rhs);
 #endif
