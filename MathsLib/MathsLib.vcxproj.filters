@@ -57,7 +57,7 @@
     <ClInclude Include="nicolausYes_easing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Curve.h">
+    <ClInclude Include="Curves.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

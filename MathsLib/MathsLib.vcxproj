@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClInclude Include="..\MathsApp\Utility.h" />
     <ClInclude Include="AABB.h" />
-    <ClInclude Include="Curve.h" />
+    <ClInclude Include="Curves.h" />
     <ClInclude Include="Matrix2.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
