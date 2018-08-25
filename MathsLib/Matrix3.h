@@ -61,10 +61,6 @@ public:
 	void set_euler(float pitch, float yaw, float roll);
 	void translate(float x, float y);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> tmp
 	operator float*() { return data_alt; }
 };
 
