@@ -81,9 +81,10 @@ namespace Curves
 			controlPoints[p1], t1,
 			s);
 	}
+	template <typename T>
+	T catmullRomSpline(const T* controlPoints, size_t count, float t) {
+		return Curves::CardinalSpline(controlPoints, count, t, 0.5f);
+	}
 }
 
-template <typename T>
-T catmullRomSpline(const T* controlPoints, size_t count, float t) {
-	return Curves::CardinalSpline(controlPoints, count, t, 0.5f);
-}
+
