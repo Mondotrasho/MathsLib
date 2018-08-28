@@ -128,7 +128,10 @@ float Vector2::angle_between(const Vector2& other) const {
 	return acos(d);
 }
 
-Vector2& operator*(const float lhs, const Vector2& rhs)
+Vector2 operator*(const float lhs, const Vector2& rhs)
 {
-	return Vector2{ lhs * rhs.x, lhs * rhs.y };
+	float temp1 = lhs * rhs.x;
+	float temp2 = lhs * rhs.y;
+
+	return Vector2{ temp1, temp2 };
 }

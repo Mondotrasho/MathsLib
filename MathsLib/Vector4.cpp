@@ -136,7 +136,7 @@ Vector4 Vector4::cross(const Vector4& other) const {
 		0 };
 }
 
-Vector4& operator*(const float& lhs, const Vector4& rhs)
+Vector4 operator*(const float& lhs, const Vector4& rhs)
 {
 	return Vector4{ lhs * rhs.x, lhs * rhs.y,lhs * rhs.z,lhs * rhs.w };
 }

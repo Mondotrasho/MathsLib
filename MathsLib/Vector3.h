@@ -68,5 +68,5 @@ public:
 	operator float*() { return data; }
 };
 
-Vector3& operator*(const float& lhs, const Vector3& rhs);
+Vector3 operator*(const float& lhs, const Vector3& rhs);
 #endif
