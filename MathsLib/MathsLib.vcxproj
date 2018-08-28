@@ -130,7 +130,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\MathsApp\Utility.h" />
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Curves.h" />
     <ClInclude Include="Matrix2.h" />
@@ -146,7 +145,6 @@
     <ClInclude Include="Vector4.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\MathsApp\Utility.cpp" />
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Matrix2.cpp" />
     <ClCompile Include="Matrix3.cpp" />
