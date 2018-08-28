@@ -193,8 +193,8 @@ void Matrix3::rotate_y(const float radians) {
 }
 void Matrix3::setRotateZ(const float radians) {
 	// leave X axis and elements unchanged
-	x_axis = { cosf(radians), -sinf(radians), 0 };
-	y_axis = { sinf(radians), cosf(radians),0  };
+	x_axis = { cosf(radians), sinf(radians), 0 };
+	y_axis = { -sinf(radians), cosf(radians),0  };
 	z_axis = { 0, 0,1 };
 }
 void Matrix3::rotate_z(const float radians) {
