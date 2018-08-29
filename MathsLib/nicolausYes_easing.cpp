@@ -156,18 +156,18 @@ float easeInOutElastic( float t ) {
 }
 
 float easeInBounce( float t ) {
-    return pow( 2, 6 * (t - 1) ) * abs( sin( t * PI * 3.5 ) );
+    return pow( 2, 6 * (t - 1) ) *std::abs( sin( t * PI * 3.5 ) );
 }
 
 float easeOutBounce( float t ) {
-    return 1 - pow( 2, -6 * t ) * abs( cos( t * PI * 3.5 ) );
+    return 1 - pow( 2, -6 * t ) *std::abs( cos( t * PI * 3.5 ) );
 }
 
 float easeInOutBounce( float t ) {
     if( t < 0.5 ) {
-        return 8 * pow( 2, 8 * (t - 1) ) * abs( sin( t * PI * 7 ) );
+        return 8 * pow( 2, 8 * (t - 1) ) *std::abs( sin( t * PI * 7 ) );
     } else {
-        return 1 - 8 * pow( 2, -8 * t ) * abs( sin( t * PI * 7 ) );
+        return 1 - 8 * pow( 2, -8 * t ) *std::abs( sin( t * PI * 7 ) );
     }
 }
 
