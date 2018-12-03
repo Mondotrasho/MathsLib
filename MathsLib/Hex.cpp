@@ -1,0 +1,152 @@
+#include "Hex.h"
+
+Hex::Hex(int q_in, int r_in, int s_in) : data{ q_in, r_in, s_in } {
+	assert(q + r + s == 0);
+}
+
+Hex::Hex(int q_, int r_): data{q_, r_, -q_ - r_}
+{
+	assert(q + r + s == 0);
+}
+
+::Hex& Hex::operator=(const Hex& hex)
+{
+	return {*this};
+}
+
+Hex::Hex(const Hex& other)
+{
+	q = other.q, r = other.r; s = other.s;
+	*this = other;
+}
+
+Hex::~Hex()
+= default;
+
+
+//OPERATORS
+bool Hex::operator == (Hex b) {
+	return q == b.q && r == b.r && s == b.s;
+}
+
+bool Hex::operator != (Hex b) {
+	return !(*this == b);
+}
+
+Hex Hex::operator+(const Hex& other) const
+{
+	return{ q + other.q, r + other.r, s + other.s };
+}
+
+Hex Hex::operator+(int other) const
+{
+	return{ q + other,r + other, s + other };
+}
+
+Hex& Hex::operator+=(const Hex& other)
+{
+	q += other.q; r += other.r; s += other.s;
+	return *this;
+}
+
+Hex Hex::operator-(const Hex& other) const
+{
+	return{ q - other.q, r - other.r, s - other.s };
+}
+
+Hex Hex::operator-(int other) const
+{
+	return{ q - other,r - other, s - other };
+}
+
+Hex& Hex::operator-=(const Hex& other)
+{
+	q -= other.q; r -= other.r; s -= other.s;
+	return *this;
+}
+
+Hex Hex::operator*(int scalar) const
+{
+	return{ q * scalar, r * scalar , s * scalar };
+}
+
+Hex& Hex::operator*=(int scalar)
+{
+	q *= scalar; r *= scalar; s *= scalar;
+	return *this;
+}
+
+Hex Hex::operator/(int scalar) const
+{
+	return{ q * scalar, r * scalar , s * scalar };
+}
+
+Hex& Hex::operator/=(int scalar)
+{
+	q *= scalar; r *= scalar; s *= scalar;
+	return *this;
+}
+
+Hex Hex::hex_add(Hex a, Hex b)
+{
+	return Hex(a.q + b.q, a.r + b.r, a.s + b.s);
+}
+
+Hex Hex::hex_subtract(Hex a, Hex b)
+{
+	return Hex(a.q - b.q, a.r - b.r, a.s - b.s);
+}
+
+Hex Hex::hex_multiply(Hex a, int k)
+{
+	return Hex(a.q * k, a.r * k, a.s * k);
+}
+
+int Hex::hex_length(Hex hex) const
+{
+	return int((abs(hex.q) + abs(hex.r) + abs(hex.s)) / 2);
+}
+
+int Hex::hex_distance(Hex a, Hex b) const
+{
+	return hex_length(hex_subtract(a, b));
+}
+
+Hex Hex::hex_direction(int direction) const
+{
+	assert(0 <= direction && direction < 6);
+	return hex_directions[direction];
+}
+
+Hex Hex::hex_neighbor(Hex hex, int direction) const
+{
+	return hex_add(hex, hex_direction(direction));
+}
+
+Point Hex::hex_to_pixel(Layout layout, Hex h)
+{
+	const Orientation& M = layout.orientation;
+	double x = (M.f0 * h.q + M.f1 * h.r) * layout.size.x;
+	double y = (M.f2 * h.q + M.f3 * h.r) * layout.size.y;
+	return Point(x + layout.origin.x, y + layout.origin.y);
+}
+
+FractionalHex Hex::pixel_to_hex(Layout layout, Point p)
+{
+	{
+		const Orientation& M = layout.orientation;
+		Point pt = Point((p.x - layout.origin.x) / layout.size.x,
+		                 (p.y - layout.origin.y) / layout.size.y);
+		double q = M.b0 * pt.x + M.b1 * pt.y;
+		double r = M.b2 * pt.x + M.b3 * pt.y;
+		return FractionalHex(q, r, -q - r);
+	}
+}
+
+Point Hex::hex_corner_offset(Layout layout, int corner) const
+{
+	Point size = layout.size;
+	double angle = 2.0 * M_PI *
+		(layout.orientation.start_angle + corner) / 6;
+	return Point(size.x * cos(angle), size.y * sin(angle));
+}
