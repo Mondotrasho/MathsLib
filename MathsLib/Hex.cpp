@@ -1,17 +1,18 @@
 #include "Hex.h"
 
-Hex::Hex(int q_in, int r_in, int s_in) : data{ q_in, r_in, s_in } {
+const std::vector<Hex> hex_directions = {
+	Hex(1, 0, -1), Hex(1, -1, 0), Hex(0, -1, 1),
+	Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1)
+};
+
+Hex::Hex(int q_in, int r_in, int s_in): /*data{ q_in, r_in, s_in }*/ q(q_in), r(r_in), s(s_in)
+{
 	assert(q + r + s == 0);
 }
 
 Hex::Hex(int q_, int r_): data{q_, r_, -q_ - r_}
 {
 	assert(q + r + s == 0);
-}
-
-::Hex& Hex::operator=(const Hex& hex)
-{
-	return {*this};
 }
 
 Hex::Hex(const Hex& other)
@@ -149,4 +150,17 @@ Point Hex::hex_corner_offset(Layout layout, int corner) const
 	double angle = 2.0 * M_PI *
 		(layout.orientation.start_angle + corner) / 6;
 	return Point(size.x * cos(angle), size.y * sin(angle));
+}
+
+std::vector<Point> Hex::polygon_corners(Layout layout, Hex h)
+{
+	std::vector<Point> corners = {};
+	Point center = hex_to_pixel(layout, h);
+	for (int i = 0; i < 6; i++)
+	{
+		Point offset = hex_corner_offset(layout, i);
+		corners.push_back(Point(center.x + offset.x,
+		                        center.y + offset.y));
+	}
+	return corners;
 }

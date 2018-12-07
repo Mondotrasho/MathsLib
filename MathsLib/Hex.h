@@ -47,10 +47,12 @@ class Hex
 {
 public:
 	//int constructors
-	Hex(int q_in, int r_in, int s_in);
+	Hex(int q_in, int r_in, int s_in);;
 	Hex();
-	Hex(int q_, int r_);
-	::Hex& operator=(const Hex& hex);
+	Hex(int q_, int r_);;
+	Hex& operator=(const Hex& hex) {
+		return{ *this };
+	};
 	//copy
 	Hex(const Hex& other);
 	~Hex();
@@ -89,10 +91,7 @@ public:
 	int hex_distance(Hex a, Hex b) const;
 
 	//Neighbours
-	const std::vector<Hex> hex_directions = {
-		Hex(1, 0, -1), Hex(1, -1, 0), Hex(0, -1, 1),
-		Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1)
-	};
+	
 
 	Hex hex_direction(int direction /* 0 to 5 */) const;
 	Hex hex_neighbor(Hex hex, int direction) const;
@@ -105,15 +104,5 @@ public:
 	//drawing
 	Point hex_corner_offset(Layout layout, int corner) const;
 
-	std::vector<Point> polygon_corners(Layout layout, Hex h) {
-		std::vector<Point> corners = {};
-		Point center = hex_to_pixel(layout, h);
-		for (int i = 0; i < 6; i++) {
-			Point offset = hex_corner_offset(layout, i);
-			corners.push_back(Point(center.x + offset.x,
-				center.y + offset.y));
-		}
-		return corners;
-	}
-
+	std::vector<Point> polygon_corners(Layout layout, Hex h);
 };

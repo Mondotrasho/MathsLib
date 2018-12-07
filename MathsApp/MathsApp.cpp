@@ -6,7 +6,7 @@
 int main()
 {
 	Hex hex = { 1,1 };
-	hex.hex_directions;
+	auto a = hex.hex_direction(1);
 
 
 	system("pause");
