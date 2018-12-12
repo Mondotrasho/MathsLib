@@ -41,8 +41,8 @@ public:
 	//int constructors
 	Hex(void) = default;
 	~Hex(void) = default;
-	Hex(int q_in, int r_in, int s_in) : q(q_in), r(r_in), s(s_in){/* assert(q + r + s == 0); */};
-	Hex(int q_, int r_) : q(q_), r(r_), s(-q_ - r_)	{/*assert(q + r + s == 0);*/	}
+	Hex(int q_in, int r_in, int s_in) : q(q_in), r(r_in), s(s_in){};
+	Hex(int q_, int r_) : q(q_), r(r_), s(-q_ - r_)	{assert(q + r + s == 0);	} //watch me
 
 	Hex& operator=(const Hex& hex) {
 		return{ *this };
