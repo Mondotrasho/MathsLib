@@ -37,6 +37,8 @@ struct Layout {
 		: orientation(orientation_), size(size_), origin(origin_) {}
 };
 
+
+
 class Hex
 {
 public:
@@ -67,8 +69,9 @@ public:
 		int data[3]{};
 	};
 	//operators
-	bool operator== (Hex other);
-	bool operator!=(Hex other);
+	bool operator==(const Hex& b) const;
+	bool operator!=(Hex b);
+
 
 	Hex operator+(const Hex& other) const;
 	Hex operator+(int other) const;
@@ -121,3 +124,14 @@ const Orientation layout_flat
 = Orientation(3.0 / 2.0, 0.0, sqrt(3.0) / 2.0, sqrt(3.0),
 	2.0 / 3.0, 0.0, -1.0 / 3.0, sqrt(3.0) / 3.0,
 	0.0);
+
+namespace std {
+	template <> struct hash<Hex> {
+		size_t operator()(const Hex& h) const {
+			hash<int> int_hash;
+			size_t hq = int_hash(h.q);
+			size_t hr = int_hash(h.r);
+			return hq ^ (hr + 0x9e3779b9 + (hq << 6) + (hq >> 2));
+		}
+	};
+}

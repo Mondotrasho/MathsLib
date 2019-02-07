@@ -7,7 +7,8 @@ const std::vector<Hex> hex_directions = {
 };
 
 //OPERATORS
-bool Hex::operator == (Hex b) {
+bool Hex::operator == (const Hex& b) const
+{
 	return q == b.q && r == b.r && s == b.s;
 }
 
@@ -208,3 +209,4 @@ std::vector<Hex> Hex::hex_linedrawnudge(Hex a, Hex b) {
 	}
 	return results;
 }
+
