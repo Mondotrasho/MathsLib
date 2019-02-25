@@ -87,7 +87,12 @@ Vector2 Vector2::invert() const
 float Vector2::magnitude() const { return sqrt(x*x + y*y); }
 float Vector2::magnitude_sqr() const { return (x*x + y*y); }
 
-void Vector2::normalise() {
+void Vector2::normalise() 
+{
+	if(magnitude() == 0)
+	{
+		return;
+	}
 	float magtemp = magnitude();
 
 	x /= magtemp;
@@ -95,6 +100,10 @@ void Vector2::normalise() {
 }
 Vector2 Vector2::normalised() const
 {
+	if (magnitude() == 0)
+	{
+		return Vector2(0,0);
+	}
 	float magtemp = magnitude();
 	return{ x / magtemp, y / magtemp };
 }
