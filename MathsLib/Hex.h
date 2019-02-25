@@ -4,6 +4,7 @@
 #include "Utilities.h"
 #include <cmath>
 #include <cassert>
+#include <algorithm>
 
 //a matrix
 struct Orientation {
@@ -20,17 +21,10 @@ struct Orientation {
 
 }; 
 
-const Orientation layout_pointy
-= Orientation(sqrt(3.0), sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0,
-	sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0,
-	0.5);
-const Orientation layout_flat
-= Orientation(3.0 / 2.0, 0.0, sqrt(3.0) / 2.0, sqrt(3.0),
-	2.0 / 3.0, 0.0, -1.0 / 3.0, sqrt(3.0) / 3.0,
-	0.0);
 
 //essentially a Vec2
 struct Point {
+public:
 	const double x, y;
 	Point(double x_, double y_) : x(x_), y(y_) {}
 };
@@ -47,15 +41,21 @@ class Hex
 {
 public:
 	//int constructors
-	Hex(int q_in, int r_in, int s_in);;
-	Hex();
-	Hex(int q_, int r_);;
+	Hex(void) = default;
+	~Hex(void) = default;
+	Hex(int q_in, int r_in, int s_in) : q(q_in), r(r_in), s(s_in){};
+	Hex(int q_, int r_) : q(q_), r(r_), s(-q_ - r_)	{assert(q + r + s == 0);	} //watch me
+
 	Hex& operator=(const Hex& hex) {
 		return{ *this };
 	};
 	//copy
-	Hex(const Hex& other);
-	~Hex();
+	Hex(const Hex& other) {
+		q = other.q;
+		r = other.r;
+		s = other.s;
+		*this = other;
+	};
 
 	//UNION
 	union {
@@ -64,7 +64,7 @@ public:
 			int  q, r, s;
 		};
 		//array accessable with [] operator
-		int data[3];
+		int data[3]{};
 	};
 	//operators
 	bool operator== (Hex other);
@@ -104,5 +104,20 @@ public:
 	//drawing
 	Point hex_corner_offset(Layout layout, int corner) const;
 
-	std::vector<Point> polygon_corners(Layout layout, Hex h);
+	std::vector<Point> polygon_corners(Layout layout, Hex h) const;
+	Hex hex_round(FractionalHex h);
+	float lerp(double a, double b, double t);
+	FractionalHex hex_lerp(Hex a, Hex b, double t);
+	FractionalHex hex_lerp(FractionalHex a, FractionalHex b, double t);
+	std::vector<Hex> hex_linedraw(Hex a, Hex b);
+	std::vector<Hex> hex_linedrawnudge(Hex a, Hex b);
 };
+const Orientation layout_pointy
+= Orientation(sqrt(3.0), sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0,
+	sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0,
+	0.5);
+
+const Orientation layout_flat
+= Orientation(3.0 / 2.0, 0.0, sqrt(3.0) / 2.0, sqrt(3.0),
+	2.0 / 3.0, 0.0, -1.0 / 3.0, sqrt(3.0) / 3.0,
+	0.0);

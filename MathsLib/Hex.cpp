@@ -1,29 +1,10 @@
 #include "Hex.h"
 
+//test
 const std::vector<Hex> hex_directions = {
 	Hex(1, 0, -1), Hex(1, -1, 0), Hex(0, -1, 1),
 	Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1)
 };
-
-Hex::Hex(int q_in, int r_in, int s_in): /*data{ q_in, r_in, s_in }*/ q(q_in), r(r_in), s(s_in)
-{
-	assert(q + r + s == 0);
-}
-
-Hex::Hex(int q_, int r_): data{q_, r_, -q_ - r_}
-{
-	assert(q + r + s == 0);
-}
-
-Hex::Hex(const Hex& other)
-{
-	q = other.q, r = other.r; s = other.s;
-	*this = other;
-}
-
-Hex::~Hex()
-= default;
-
 
 //OPERATORS
 bool Hex::operator == (Hex b) {
@@ -127,8 +108,10 @@ Hex Hex::hex_neighbor(Hex hex, int direction) const
 Point Hex::hex_to_pixel(Layout layout, Hex h)
 {
 	const Orientation& M = layout.orientation;
+
 	double x = (M.f0 * h.q + M.f1 * h.r) * layout.size.x;
 	double y = (M.f2 * h.q + M.f3 * h.r) * layout.size.y;
+
 	return Point(x + layout.origin.x, y + layout.origin.y);
 }
 
@@ -152,15 +135,76 @@ Point Hex::hex_corner_offset(Layout layout, int corner) const
 	return Point(size.x * cos(angle), size.y * sin(angle));
 }
 
-std::vector<Point> Hex::polygon_corners(Layout layout, Hex h)
+std::vector<Point> Hex::polygon_corners(Layout layout, Hex h) const
 {
 	std::vector<Point> corners = {};
 	Point center = hex_to_pixel(layout, h);
+
 	for (int i = 0; i < 6; i++)
 	{
 		Point offset = hex_corner_offset(layout, i);
 		corners.push_back(Point(center.x + offset.x,
 		                        center.y + offset.y));
 	}
+
 	return corners;
+}
+
+Hex Hex::hex_round(FractionalHex h) {
+	int q = int(round(h.q));
+	int r = int(round(h.r));
+	int s = int(round(h.s));
+	double q_diff = abs(q - h.q);
+	double r_diff = abs(r - h.r);
+	double s_diff = abs(s - h.s);
+	if (q_diff > r_diff && q_diff > s_diff) {
+		q = -r - s;
+	}
+	else if (r_diff > s_diff) {
+		r = -q - s;
+	}
+	else {
+		s = -q - r;
+	}
+	return Hex(q, r, s);
+}
+
+float Hex::lerp(double a, double b, double t) {
+	return a * (1 - t) + b * t;
+	/* better for floating point precision than
+	a + (b - a) * t, which is what I usually write */
+}
+
+FractionalHex Hex::hex_lerp(Hex a, Hex b, double t) {
+	return FractionalHex(lerp(a.q, b.q, t),
+		lerp(a.r, b.r, t),
+		lerp(a.s, b.s, t));
+}
+FractionalHex Hex::hex_lerp(FractionalHex a, FractionalHex b, double t) {
+	return FractionalHex(lerp(a.q, b.q, t),
+		lerp(a.r, b.r, t),
+		lerp(a.s, b.s, t));
+}
+
+std::vector<Hex> Hex::hex_linedraw(Hex a, Hex b) {
+	int N = hex_distance(a, b);
+	std::vector<Hex> results = {};
+	double step = 1.0 / std::max(N, 1);
+	for (int i = 0; i <= N; i++) {
+		results.push_back(hex_round(hex_lerp(a, b, step * i)));
+	}
+	return results;
+}
+
+std::vector<Hex> Hex::hex_linedrawnudge(Hex a, Hex b) {
+	int N = hex_distance(a, b);
+	FractionalHex a_nudge(a.q + 1e-6, a.r + 1e-6, a.s - 2e-6);
+	FractionalHex b_nudge(b.q + 1e-6, b.r + 1e-6, b.s - 2e-6);
+	std::vector<Hex> results = {};
+	double step = 1.0 / std::max(N, 1);
+	for (int i = 0; i <= N; i++) {
+		results.push_back(
+			hex_round(hex_lerp(a_nudge, b_nudge, step * i)));
+	}
+	return results;
 }
