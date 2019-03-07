@@ -137,6 +137,32 @@ float Vector2::angle_between(const Vector2& other) const {
 	return acos(d);
 }
 
+void Vector2::clamp_max(float max)
+{
+	if (x > max)
+		x = max;
+	if (y > max)
+		y = max;
+}
+
+void Vector2::clamp_min(float min)
+{
+	if (x < min)
+		x = min;
+	if (y < min)
+		y = min;
+}
+
+void Vector2::limit(float max)
+{
+	if (magnitude() > max)
+	{
+		Vector2 a = normalised() * max;
+		x = a.x;
+		y = a.y;
+	}
+}
+
 Vector2 operator*(const float lhs, const Vector2& rhs)
 {
 	float temp1 = lhs * rhs.x;
@@ -144,3 +170,4 @@ Vector2 operator*(const float lhs, const Vector2& rhs)
 
 	return Vector2{ temp1, temp2 };
 }
+

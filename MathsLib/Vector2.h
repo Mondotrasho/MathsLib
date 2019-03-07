@@ -61,6 +61,10 @@ public:
 	float angle_between(const Vector2& other) const;
 
 	operator float*() { return data; }
+
+	void clamp_max(float max);
+	void clamp_min(float min);
+	void limit(float max);
 };
 
 Vector2 operator*(const float lhs, const Vector2& rhs);
